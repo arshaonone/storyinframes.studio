@@ -62,13 +62,26 @@ input, textarea, select { font-family: inherit; }
 }
 .section { padding: 8rem 0; }
 
-/* ─── Noise Texture Overlay ─────────────────────────── */
+/* ─── Performance: below-fold sections defer rendering ── */
+.work-section, .services-section, .about-section, .testimonials-section, .contact-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* ─── Image rendering hints ─────────────────────────── */
+img {
+  display: block; max-width: 100%; height: auto;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ─── Noise Texture Overlay — disabled on mobile for perf ── */
 .noise-overlay {
   position: fixed; inset: 0; z-index: 9999;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
 }
+@media (max-width: 768px) { .noise-overlay { display: none; } }
 
 /* ─── Custom Cursor ─────────────────────────────────── */
 .cursor-dot, .cursor-ring {

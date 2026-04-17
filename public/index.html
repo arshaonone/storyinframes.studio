@@ -6,10 +6,32 @@
     <title>StoryInFrames Studio | Cinematic Videography & Photography Europe</title>
     <meta name="description" content="Premium cinematic videography and photography. We craft visual stories for brands, events, and creators across Europe and worldwide.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+
+    <!-- Critical CSS inline to kill FOUC and speed up FCP -->
+    <style>
+      :root{--bg:#0a0908;--amber:#d4915a;--ink:#f5f0ea;}
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth;font-size:16px}
+      body{background:var(--bg);color:#c2bdb6;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+      .nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.5rem 3rem;border-bottom:1px solid transparent}
+    </style>
+
+    <!-- Preconnect for fast DNS resolution -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Google Fonts: non-blocking with media trick -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap"></noscript>
+
+    <!-- FontAwesome deferred (non-blocking) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -104,20 +126,20 @@
         </div>
     </div>
 
-    <!-- Film strip gallery at bottom -->
+    <!-- Film strip gallery at bottom — all lazy loaded (offscreen on mobile) -->
     <div class="hero-filmstrip" id="filmstrip">
         <div class="fs-track">
-            <div class="fs-frame"><img src="assets/portfolio_commercial.png" alt="Commercial shoot"></div>
-            <div class="fs-frame"><img src="assets/portfolio_wedding.png" alt="Wedding film"></div>
-            <div class="fs-frame fs-wide"><img src="assets/hero_cinematic.png" alt="Cinematic work"></div>
-            <div class="fs-frame"><img src="assets/portfolio_photo.png" alt="Photography"></div>
-            <div class="fs-frame"><img src="assets/portfolio_travel.png" alt="Travel documentary"></div>
-            <!-- Duplicate for loop -->
-            <div class="fs-frame"><img src="assets/portfolio_commercial.png" alt="Commercial shoot"></div>
-            <div class="fs-frame"><img src="assets/portfolio_wedding.png" alt="Wedding film"></div>
-            <div class="fs-frame fs-wide"><img src="assets/hero_cinematic.png" alt="Cinematic work"></div>
-            <div class="fs-frame"><img src="assets/portfolio_photo.png" alt="Photography"></div>
-            <div class="fs-frame"><img src="assets/portfolio_travel.png" alt="Travel documentary"></div>
+            <div class="fs-frame"><img src="assets/portfolio_commercial.png" alt="Commercial shoot" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame"><img src="assets/portfolio_wedding.png" alt="Wedding film" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame fs-wide"><img src="assets/hero_cinematic.png" alt="Cinematic work" loading="lazy" width="420" height="200" decoding="async"></div>
+            <div class="fs-frame"><img src="assets/portfolio_photo.png" alt="Photography" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame"><img src="assets/portfolio_travel.png" alt="Travel documentary" loading="lazy" width="280" height="200" decoding="async"></div>
+            <!-- Duplicate for seamless loop (aria-hidden to skip screen readers) -->
+            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_commercial.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_wedding.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame fs-wide" aria-hidden="true"><img src="assets/hero_cinematic.png" alt="" loading="lazy" width="420" height="200" decoding="async"></div>
+            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_photo.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_travel.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
         </div>
     </div>
 </section>
@@ -161,7 +183,7 @@
         <!-- Asymmetric grid -->
         <div class="work-grid">
             <div class="wg-card wg-large reveal" data-delay="0">
-                <img src="assets/portfolio_commercial.png" alt="Commercial Campaign">
+                <img src="assets/portfolio_commercial.png" alt="Commercial Campaign" loading="lazy" decoding="async">
                 <div class="wg-info">
                     <span class="wg-cat">Commercial</span>
                     <span class="wg-title">Brand Campaign — Lisbon</span>
@@ -169,7 +191,7 @@
                 </div>
             </div>
             <div class="wg-card wg-small reveal" data-delay="1">
-                <img src="assets/portfolio_wedding.png" alt="Wedding Film">
+                <img src="assets/portfolio_wedding.png" alt="Wedding Film" loading="lazy" decoding="async">
                 <div class="wg-info">
                     <span class="wg-cat">Wedding</span>
                     <span class="wg-title">Cinematic Wedding Film</span>
@@ -177,7 +199,7 @@
                 </div>
             </div>
             <div class="wg-card wg-medium reveal" data-delay="2">
-                <img src="assets/portfolio_photo.png" alt="Fashion Editorial">
+                <img src="assets/portfolio_photo.png" alt="Fashion Editorial" loading="lazy" decoding="async">
                 <div class="wg-info">
                     <span class="wg-cat">Photography</span>
                     <span class="wg-title">Fashion Editorial</span>
@@ -185,7 +207,7 @@
                 </div>
             </div>
             <div class="wg-card wg-medium reveal" data-delay="3">
-                <img src="assets/portfolio_travel.png" alt="Travel Documentary">
+                <img src="assets/portfolio_travel.png" alt="Travel Documentary" loading="lazy" decoding="async">
                 <div class="wg-info">
                     <span class="wg-cat">Documentary</span>
                     <span class="wg-title">Travel Series — Europe</span>
@@ -233,7 +255,7 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_commercial.png" alt="Videography">
+                            <img src="assets/portfolio_commercial.png" alt="Videography" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -265,7 +287,7 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_photo.png" alt="Photography">
+                            <img src="assets/portfolio_photo.png" alt="Photography" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -297,7 +319,7 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_wedding.png" alt="Post Production">
+                            <img src="assets/portfolio_wedding.png" alt="Post Production" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -315,7 +337,7 @@
             <!-- Left: Founder image -->
             <div class="about-img-col reveal" data-delay="0">
                 <div class="about-img-wrap">
-                    <img src="assets/owner_rezaul.jpg" alt="Rezaul — Founder & Lead Cinematographer" class="about-img">
+                    <img src="assets/owner_rezaul.jpg" alt="Rezaul — Founder & Lead Cinematographer" class="about-img" loading="lazy" decoding="async" width="600" height="750">
                     <div class="about-img-caption">
                         <span class="aic-role">Founder & Lead Cinematographer</span>
                         <span class="aic-name">Rezaul</span>
