@@ -337,9 +337,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-inner {
   position: relative; z-index: 1;
   max-width: 1400px; margin: 0 auto; width: 100%;
-  padding: 16rem 3rem 5rem;
+  padding: 10rem 3rem 4rem;
   display: grid; grid-template-columns: 1fr 400px;
-  gap: 5rem; align-items: end;
+  gap: 5rem; align-items: center;
 }
 
 /* ── Hero text ── */
@@ -794,7 +794,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   filter: grayscale(0%) brightness(0.92) contrast(1.05) saturate(1.1);
 }
 
-/* Grid positions */
+/* Portfolio image crops — object-position per card */
+.wg-large    img { object-position: center 30%; }  /* Product/handbag — show centre */
+.wg-small    img { object-position: center 25%; }  /* Wedding — show couple faces */
+.wg-medium-a img { object-position: center 15%; }  /* Portrait — show face top area */
+.wg-medium-b img { object-position: center 40%; }  /* Travel/Coastal — show scenery */
+
 .wg-large    { grid-column: 1; grid-row: 1; }
 .wg-small    { grid-column: 2; grid-row: 1; }
 .wg-medium-a { grid-column: 1; grid-row: 2; }
@@ -1358,7 +1363,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .wrap { padding:0 2rem; }
   .nav { padding:1.4rem 2rem; }
   .nav.stuck { padding:0.85rem 2rem; }
-  .hero-inner { grid-template-columns:1fr; padding:15rem 2rem 4rem; }
+  .hero-inner { grid-template-columns:1fr; padding:11rem 2rem 4rem; }
   .hero-right { flex-direction:row; flex-wrap:wrap; }
   .hero-stat-card { flex:1; min-width:180px; }
   .work-grid { grid-template-columns:1fr 1fr; grid-template-rows:380px 270px; }
@@ -1397,7 +1402,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .section { padding:5.5rem 0; }
   .wrap { padding:0 1.4rem; }
-  .hero-inner { padding:12rem 1.4rem 3rem; }
+  .hero-inner { padding:9rem 1.4rem 3rem; }
   .hero-right { flex-direction:column; }
   .work-grid { grid-template-columns:1fr; grid-template-rows:280px 250px 260px; }
   .wg-large, .wg-small, .wg-medium-a { grid-column:1; }
@@ -1416,7 +1421,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 @media (max-width:480px) {
   .wrap { padding:0 1.1rem; }
-  .hero-inner { padding:10rem 1.1rem 2.5rem; }
+  .hero-inner { padding:7.5rem 1.1rem 2.5rem; }
   .hh-bold  { font-size: clamp(2.8rem,14vw,5rem); }
   .hh-serif { font-size: clamp(3.5rem,16vw,6rem); }
   .hh-stroke { font-size: clamp(2.8rem,14vw,5rem); }
