@@ -3,49 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StoryInFrames Studio | Cinematic Videography & Photography Europe</title>
-    <meta name="description" content="Premium cinematic videography and photography. We craft visual stories for brands, events, and creators across Europe and worldwide.">
+    <title>StoryInFrames Studio | Cinematic Videography &amp; Photography — Europe</title>
+    <meta name="description" content="Premium cinematic videography and photography. We craft visual stories for brands, events, and creators across Europe and worldwide. Based in Lisbon.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
 
-    <!-- Critical CSS inline to kill FOUC and speed up FCP -->
+    <!-- Critical CSS — prevents FOUC -->
     <style>
-      :root{--bg:#faf8f5;--amber:#c07a3a;--ink:#1a1714;}
+      :root{--bg:#ffffff;--gold:#b8682a;--ink:#0e0c0a;}
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       html{scroll-behavior:smooth;font-size:16px}
-      body{background:var(--bg);color:#3d3730;font-family:'Open Sans',sans-serif;overflow-x:hidden}
-      .nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.5rem 3rem;border-bottom:1px solid transparent}
+      body{background:var(--bg);color:#2e2a25;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+      .nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.6rem 3rem;border-bottom:1px solid transparent}
     </style>
 
-    <!-- Preconnect for fast DNS resolution -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Google Fonts: 5 premium fonts, non-blocking -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap"></noscript>
+    <!-- Fonts — non-blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"></noscript>
 
-    <!-- FontAwesome deferred (non-blocking) -->
+    <!-- Font Awesome — non-blocking -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ░░░░ NOISE OVERLAY ░░░░ -->
+<!-- Noise overlay -->
 <div class="noise-overlay" aria-hidden="true"></div>
 
-<!-- ░░░░ CURSOR ░░░░ -->
+<!-- Custom cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- ════════════════════════════════════════════════
+<!-- ════════════════════════════════════════
      NAVIGATION
-════════════════════════════════════════════════ -->
+════════════════════════════════════════ -->
 <nav class="nav" id="nav">
     <div class="nav-wrap">
         <a href="#hero" class="nav-brand" id="nav-brand-link">
@@ -56,15 +55,17 @@
         </a>
 
         <div class="nav-center" id="navCenter">
-            <a href="#work" class="nl">Work</a>
+            <a href="#work"     class="nl">Work</a>
             <a href="#services" class="nl">Services</a>
-            <a href="#about" class="nl">Studio</a>
-            <a href="#reviews" class="nl">Clients</a>
+            <a href="#about"    class="nl">Studio</a>
+            <a href="#reviews"  class="nl">Clients</a>
         </div>
 
         <div class="nav-end">
-            <span class="nav-avail"><span class="avail-dot"></span>Available for projects</span>
-            <a href="#contact" class="nav-cta-btn" id="nav-cta">
+            <span class="nav-avail">
+                <span class="avail-dot"></span>Available for projects
+            </span>
+            <a href="#contact" class="nav-cta" id="nav-cta">
                 <i class="fa-solid fa-paper-plane"></i> Start a Project
             </a>
             <button class="nav-burger" id="burger" aria-label="Menu">
@@ -74,146 +75,195 @@
     </div>
 </nav>
 
-<!-- ════════════════════════════════════════════════
+<!-- ════════════════════════════════════════
      HERO
-════════════════════════════════════════════════ -->
+════════════════════════════════════════ -->
 <section id="hero" class="hero">
-    <!-- Film counter / meta info -->
-    <div class="hero-meta">
-        <span class="meta-tag">FRAME <em>001</em></span>
-        <span class="meta-divider"></span>
-        <span class="meta-tag">EST. 2019</span>
-        <span class="meta-divider"></span>
-        <span class="meta-tag">EUROPE ✦ WORLDWIDE</span>
-    </div>
+    <div class="hero-inner">
+        <!-- Left: Content -->
+        <div class="hero-left">
+            <!-- Meta row -->
+            <div class="hero-meta">
+                <span class="hero-meta-tag">Frame <em>001</em></span>
+                <span class="hero-meta-sep"></span>
+                <span class="hero-meta-tag">Est. 2019</span>
+                <span class="hero-meta-sep"></span>
+                <span class="hero-meta-tag">Europe ✦ Worldwide</span>
+            </div>
 
-    <!-- Main headline -->
-    <div class="hero-headline-wrap">
-        <div class="headline-row row-1">
-            <span class="hl-word hl-thin">We</span>
-            <span class="hl-word hl-bold">Craft</span>
-        </div>
-        <div class="headline-row row-2">
-            <div class="hl-word hl-italic-serif">Cinematic</div>
-            <div class="hero-badge-inline">
-                <span class="hbi-num">5+</span>
-                <span class="hbi-label">Years of<br>Visual Stories</span>
+            <!-- Large headline -->
+            <h1 class="hero-headline">
+                <span class="line"><span class="word-bold">We</span> Craft</span>
+                <span class="line word-italic">Cinematic</span>
+                <span class="line word-bold">Stories.</span>
+            </h1>
+
+            <!-- Sub copy + CTAs -->
+            <div class="hero-subrow">
+                <p class="hero-sub">
+                    Premium visual production for brands, luxury events & creators.
+                    Based in Lisbon — working across Europe.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#work" class="btn-primary" id="hero-work-btn">
+                        <span>View Work</span>
+                        <span class="icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#contact" class="btn-outline" id="hero-contact-btn">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        Book Now
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="headline-row row-3">
-            <span class="hl-word hl-bold hl-amber">Stories</span>
-            <span class="hl-word hl-thin">that</span>
-            <span class="hl-word hl-bold">Move</span>
-        </div>
-    </div>
 
-    <!-- Sub copy + CTAs -->
-    <div class="hero-bottom">
-        <div class="hero-sub-wrap">
-            <p class="hero-sub">Premium visual production for brands, events, and creators. Based in Lisbon — working across Europe.</p>
-            <div class="hero-ctas">
-                <a href="#work" class="btn-amber" id="hero-work-btn">
-                    <span>View Our Work</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="#contact" class="btn-ghost" id="hero-contact-btn">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span>Book a Project</span>
-                </a>
+        <!-- Right: Stat cards -->
+        <div class="hero-right">
+            <div class="hero-stat-card">
+                <div class="hsc-icon">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <div>
+                    <div class="hsc-num">200+</div>
+                    <div class="hsc-label">Projects Completed</div>
+                </div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hsc-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div>
+                    <div class="hsc-num">12+</div>
+                    <div class="hsc-label">Countries Covered</div>
+                </div>
+            </div>
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>Taking bookings for <strong>2025</strong></span>
             </div>
         </div>
-        <!-- Scroll hint -->
-        <div class="hero-scroll-hint">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
     </div>
 
-    <!-- Film strip gallery at bottom — all lazy loaded (offscreen on mobile) -->
+    <!-- Filmstrip -->
     <div class="hero-filmstrip" id="filmstrip">
         <div class="fs-track">
-            <div class="fs-frame"><img src="assets/portfolio_commercial.png" alt="Commercial shoot" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame"><img src="assets/portfolio_wedding.png" alt="Wedding film" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame fs-wide"><img src="assets/hero_cinematic.png" alt="Cinematic work" loading="lazy" width="420" height="200" decoding="async"></div>
-            <div class="fs-frame"><img src="assets/portfolio_photo.png" alt="Photography" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame"><img src="assets/portfolio_travel.png" alt="Travel documentary" loading="lazy" width="280" height="200" decoding="async"></div>
-            <!-- Duplicate for seamless loop (aria-hidden to skip screen readers) -->
-            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_commercial.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_wedding.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame fs-wide" aria-hidden="true"><img src="assets/hero_cinematic.png" alt="" loading="lazy" width="420" height="200" decoding="async"></div>
-            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_photo.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
-            <div class="fs-frame" aria-hidden="true"><img src="assets/portfolio_travel.png" alt="" loading="lazy" width="280" height="200" decoding="async"></div>
+            <div class="fs-frame">
+                <img src="assets/portfolio_commercial.png" alt="Commercial shoot" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame fs-wide">
+                <img src="assets/hero_cinematic.png" alt="Cinematic film" loading="lazy" width="440" height="220" decoding="async">
+            </div>
+            <div class="fs-frame">
+                <img src="assets/portfolio_wedding.png" alt="Wedding film" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame">
+                <img src="assets/portfolio_photo.png" alt="Photography" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame">
+                <img src="assets/portfolio_travel.png" alt="Travel documentary" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <!-- Duplicates for seamless loop -->
+            <div class="fs-frame" aria-hidden="true">
+                <img src="assets/portfolio_commercial.png" alt="" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame fs-wide" aria-hidden="true">
+                <img src="assets/hero_cinematic.png" alt="" loading="lazy" width="440" height="220" decoding="async">
+            </div>
+            <div class="fs-frame" aria-hidden="true">
+                <img src="assets/portfolio_wedding.png" alt="" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame" aria-hidden="true">
+                <img src="assets/portfolio_photo.png" alt="" loading="lazy" width="300" height="220" decoding="async">
+            </div>
+            <div class="fs-frame" aria-hidden="true">
+                <img src="assets/portfolio_travel.png" alt="" loading="lazy" width="300" height="220" decoding="async">
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     SOCIAL PROOF TICKER
-════════════════════════════════════════════════ -->
-<div class="ticker-bar">
+<!-- ════════════════════════════════════════
+     TICKER BAR
+════════════════════════════════════════ -->
+<div class="ticker-bar" aria-hidden="true">
     <div class="ticker-track">
         <span>✦ Cinematic Videography</span>
         <span>✦ Fine-Art Photography</span>
-        <span>✦ Brand Campaigns</span>
+        <span>✦ <strong>Brand Campaigns</strong></span>
         <span>✦ Post-Production</span>
         <span>✦ Wedding Films</span>
-        <span>✦ Europe & Worldwide</span>
+        <span>✦ Europe &amp; Worldwide</span>
+        <span>✦ DaVinci Colour Grade</span>
         <span>✦ Cinematic Videography</span>
         <span>✦ Fine-Art Photography</span>
-        <span>✦ Brand Campaigns</span>
+        <span>✦ <strong>Brand Campaigns</strong></span>
         <span>✦ Post-Production</span>
         <span>✦ Wedding Films</span>
-        <span>✦ Europe & Worldwide</span>
+        <span>✦ Europe &amp; Worldwide</span>
+        <span>✦ DaVinci Colour Grade</span>
     </div>
 </div>
 
-<!-- ════════════════════════════════════════════════
-     WORK / PORTFOLIO
-════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+     WORK
+════════════════════════════════════════ -->
 <section id="work" class="section work-section">
     <div class="wrap">
-        <div class="section-head sh-split">
+        <div class="section-head sh-split reveal" data-delay="0">
             <div class="sh-left">
                 <div class="eyebrow">Selected Work</div>
-                <h2 class="sec-h2">Latest<br><em>Creative Work</em></h2>
+                <h2 class="sec-h2">Latest <em>Creative</em><br><strong>Projects</strong></h2>
             </div>
             <div class="sh-right">
-                <p>A curated collection of cinematic projects — shot with intent, crafted with precision.</p>
-                <a href="#contact" class="link-arrow" id="all-work-link">View all projects <i class="fa-solid fa-arrow-right"></i></a>
+                <p>A curated collection of cinematic projects — shot with intent, crafted with precision, delivered for impact.</p>
+                <a href="#contact" class="link-arrow" id="all-work-link">
+                    View all projects <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Asymmetric grid -->
         <div class="work-grid">
             <div class="wg-card wg-large reveal" data-delay="0">
                 <img src="assets/portfolio_commercial.png" alt="Commercial Campaign" loading="lazy" decoding="async">
+                <div class="wg-overlay"></div>
                 <div class="wg-info">
-                    <span class="wg-cat">Commercial</span>
-                    <span class="wg-title">Brand Campaign — Lisbon</span>
+                    <div>
+                        <span class="wg-cat">Commercial</span>
+                        <span class="wg-title">Brand Campaign — Lisbon</span>
+                    </div>
                     <span class="wg-num">001</span>
                 </div>
             </div>
             <div class="wg-card wg-small reveal" data-delay="1">
                 <img src="assets/portfolio_wedding.png" alt="Wedding Film" loading="lazy" decoding="async">
+                <div class="wg-overlay"></div>
                 <div class="wg-info">
-                    <span class="wg-cat">Wedding</span>
-                    <span class="wg-title">Cinematic Wedding Film</span>
+                    <div>
+                        <span class="wg-cat">Wedding</span>
+                        <span class="wg-title">Cinematic Wedding Film</span>
+                    </div>
                     <span class="wg-num">002</span>
                 </div>
             </div>
-            <div class="wg-card wg-medium reveal" data-delay="2">
+            <div class="wg-card wg-medium-a reveal" data-delay="2">
                 <img src="assets/portfolio_photo.png" alt="Fashion Editorial" loading="lazy" decoding="async">
+                <div class="wg-overlay"></div>
                 <div class="wg-info">
-                    <span class="wg-cat">Photography</span>
-                    <span class="wg-title">Fashion Editorial</span>
+                    <div>
+                        <span class="wg-cat">Photography</span>
+                        <span class="wg-title">Fashion Editorial</span>
+                    </div>
                     <span class="wg-num">003</span>
                 </div>
             </div>
-            <div class="wg-card wg-medium reveal" data-delay="3">
+            <div class="wg-card wg-medium-b reveal" data-delay="3">
                 <img src="assets/portfolio_travel.png" alt="Travel Documentary" loading="lazy" decoding="async">
+                <div class="wg-overlay"></div>
                 <div class="wg-info">
-                    <span class="wg-cat">Documentary</span>
-                    <span class="wg-title">Travel Series — Europe</span>
+                    <div>
+                        <span class="wg-cat">Documentary</span>
+                        <span class="wg-title">Travel Series — Europe</span>
+                    </div>
                     <span class="wg-num">004</span>
                 </div>
             </div>
@@ -221,21 +271,22 @@
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
+<!-- ════════════════════════════════════════
      SERVICES
-════════════════════════════════════════════════ -->
+════════════════════════════════════════ -->
 <section id="services" class="section services-section">
     <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal" data-delay="0">
             <div class="eyebrow">What We Offer</div>
-            <h2 class="sec-h2">End-to-End<br><em>Visual Production</em></h2>
+            <h2 class="sec-h2">End-to-End <em>Visual</em><br><strong>Production</strong></h2>
         </div>
 
         <div class="services-list" id="servicesList">
+            <!-- Service 1 -->
             <div class="srv" id="srv-1">
                 <div class="srv-top">
                     <div class="srv-num">01</div>
-                    <div class="srv-name-wrap">
+                    <div>
                         <h3 class="srv-name">Videography</h3>
                         <p class="srv-sub">Cinematic storytelling at its finest</p>
                     </div>
@@ -244,7 +295,9 @@
                         <span>Documentaries</span>
                         <span>Events</span>
                     </div>
-                    <button class="srv-toggle" aria-label="Expand"><i class="fa-solid fa-plus"></i></button>
+                    <button class="srv-toggle" aria-label="Expand">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
                 <div class="srv-body">
                     <div class="srv-body-inner">
@@ -258,16 +311,17 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_commercial.png" alt="Videography" loading="lazy" decoding="async">
+                            <img src="assets/portfolio_commercial.png" alt="Videography service" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Service 2 -->
             <div class="srv" id="srv-2">
                 <div class="srv-top">
                     <div class="srv-num">02</div>
-                    <div class="srv-name-wrap">
+                    <div>
                         <h3 class="srv-name">Photography</h3>
                         <p class="srv-sub">Stills that speak volumes</p>
                     </div>
@@ -276,7 +330,9 @@
                         <span>Portraits</span>
                         <span>Products</span>
                     </div>
-                    <button class="srv-toggle" aria-label="Expand"><i class="fa-solid fa-plus"></i></button>
+                    <button class="srv-toggle" aria-label="Expand">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
                 <div class="srv-body">
                     <div class="srv-body-inner">
@@ -290,25 +346,28 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_photo.png" alt="Photography" loading="lazy" decoding="async">
+                            <img src="assets/portfolio_photo.png" alt="Photography service" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Service 3 -->
             <div class="srv" id="srv-3">
                 <div class="srv-top">
                     <div class="srv-num">03</div>
-                    <div class="srv-name-wrap">
+                    <div>
                         <h3 class="srv-name">Post-Production</h3>
                         <p class="srv-sub">Where raw footage becomes art</p>
                     </div>
                     <div class="srv-tags">
-                        <span>Color Grade</span>
+                        <span>Colour Grade</span>
                         <span>Editing</span>
                         <span>Sound</span>
                     </div>
-                    <button class="srv-toggle" aria-label="Expand"><i class="fa-solid fa-plus"></i></button>
+                    <button class="srv-toggle" aria-label="Expand">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
                 <div class="srv-body">
                     <div class="srv-body-inner">
@@ -322,7 +381,7 @@
                             </ul>
                         </div>
                         <div class="srv-body-img">
-                            <img src="assets/portfolio_wedding.png" alt="Post Production" loading="lazy" decoding="async">
+                            <img src="assets/portfolio_wedding.png" alt="Post production" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -331,35 +390,39 @@
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     ABOUT / STUDIO
-════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
 <section id="about" class="section about-section">
     <div class="wrap">
         <div class="about-grid">
-            <!-- Left: Founder image -->
+            <!-- Left: Image -->
             <div class="about-img-col reveal" data-delay="0">
                 <div class="about-img-wrap">
-                    <img src="assets/owner_rezaul.jpg" alt="Rezaul — Founder & Lead Cinematographer" class="about-img" loading="lazy" decoding="async" width="600" height="750">
+                    <img
+                        src="assets/owner_rezaul.jpg"
+                        alt="Rezaul — Founder & Lead Cinematographer"
+                        class="about-img"
+                        loading="lazy" decoding="async" width="600" height="800"
+                    >
                     <div class="about-img-caption">
-                        <span class="aic-role">Founder & Lead Cinematographer</span>
+                        <span class="aic-role">Founder &amp; Lead Cinematographer</span>
                         <span class="aic-name">Rezaul</span>
                     </div>
-                    <div class="about-img-accent"></div>
                 </div>
             </div>
 
-            <!-- Right: Text + stats -->
+            <!-- Right: Text -->
             <div class="about-text-col reveal" data-delay="1">
                 <div class="eyebrow">The Studio</div>
-                <h2 class="sec-h2">A studio built on<br><em>passion for the craft</em></h2>
+                <h2 class="sec-h2">Built on a<br><em>passion</em> for<br><strong>the craft</strong></h2>
                 <p class="about-p">At StoryInFrames Studio, based in Lisbon, we don't just point cameras — we tell stories that matter. Founded by Rezaul, the studio was born out of a belief that every moment, every brand, every person has a story worth telling beautifully.</p>
                 <p class="about-p">From the historic streets of Porto to the alpine meadows of Switzerland, we've brought cinematic vision to some of Europe's most memorable moments.</p>
 
                 <blockquote class="about-quote">
                     <i class="fa-solid fa-quote-left"></i>
-                    "Every frame is a canvas. Every moment a story waiting to be told."
-                    <cite>— Rezaul</cite>
+                    "Every frame is a canvas. Every moment, a story waiting to be told."
+                    <cite>— Rezaul, Founder</cite>
                 </blockquote>
 
                 <div class="about-stats-row">
@@ -381,55 +444,71 @@
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
+<!-- ════════════════════════════════════════
      TESTIMONIALS
-════════════════════════════════════════════════ -->
+════════════════════════════════════════ -->
 <section id="reviews" class="section testimonials-section">
     <div class="wrap">
-        <div class="section-head sh-center">
+        <div class="section-head sh-center reveal" data-delay="0">
             <div class="eyebrow">Client Stories</div>
-            <h2 class="sec-h2">What Clients Say</h2>
+            <h2 class="sec-h2">What <em>Clients</em> Say</h2>
         </div>
+    </div>
 
-        <div class="testimonials-scroller">
-            <div class="ts-track" id="tsTrack">
-                <div class="ts-card">
-                    <div class="ts-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Absolutely exceptional. The storytelling, the colour, the precision — these guys operate on a completely different level. Our campaign performed beyond every benchmark we set."</p>
-                    <div class="ts-author">
-                        <div class="ts-avatar">CD</div>
-                        <div class="ts-meta">
-                            <strong>Creative Director</strong>
-                            <span>Global Agency, Amsterdam</span>
-                        </div>
+    <div class="testimonials-scroller">
+        <div class="ts-track" id="tsTrack" style="padding: 0 calc((100vw - 1360px)/2 + 3rem) 0;">
+            <div class="ts-card">
+                <div class="ts-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Absolutely exceptional. The storytelling, the colour, the precision — these guys operate on a completely different level. Our campaign performed beyond every benchmark we set."</p>
+                <div class="ts-author">
+                    <div class="ts-avatar">CD</div>
+                    <div class="ts-meta">
+                        <strong>Creative Director</strong>
+                        <span>Global Agency, Amsterdam</span>
                     </div>
                 </div>
-                <div class="ts-card ts-card-featured">
-                    <div class="ts-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Professional, creative, and deeply human. Working with StoryInFrames was the best creative decision we made this year. We'll be back for every major project."</p>
-                    <div class="ts-author">
-                        <div class="ts-avatar">JM</div>
-                        <div class="ts-meta">
-                            <strong>CEO</strong>
-                            <span>Tech Startup, Berlin</span>
-                        </div>
+            </div>
+
+            <div class="ts-card ts-card-featured">
+                <div class="ts-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Professional, creative, and deeply human. Working with StoryInFrames was the best creative decision we made this year. We'll be back for every major project."</p>
+                <div class="ts-author">
+                    <div class="ts-avatar">JM</div>
+                    <div class="ts-meta">
+                        <strong>CEO</strong>
+                        <span>Tech Startup, Berlin</span>
                     </div>
                 </div>
-                <div class="ts-card">
-                    <div class="ts-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="ts-card">
+                <div class="ts-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"They didn't just film our wedding — they captured the emotion of the entire day in a way that brings tears every time we watch it. Absolutely extraordinary."</p>
+                <div class="ts-author">
+                    <div class="ts-avatar">S&amp;P</div>
+                    <div class="ts-meta">
+                        <strong>Sara &amp; Pedro</strong>
+                        <span>Wedding Clients, Porto</span>
                     </div>
-                    <p>"They didn't just film our wedding — they captured the emotion of the entire day in a way that brings tears every time we watch it. Absolutely extraordinary."</p>
-                    <div class="ts-author">
-                        <div class="ts-avatar">S&P</div>
-                        <div class="ts-meta">
-                            <strong>Sara & Pedro</strong>
-                            <span>Wedding Clients, Porto</span>
-                        </div>
+                </div>
+            </div>
+
+            <div class="ts-card">
+                <div class="ts-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"The attention to detail, the creative direction, the final result — everything exceeded our expectations. Our brand has never looked this good on screen."</p>
+                <div class="ts-author">
+                    <div class="ts-avatar">AF</div>
+                    <div class="ts-meta">
+                        <strong>Art Director</strong>
+                        <span>Luxury Brand, Paris</span>
                     </div>
                 </div>
             </div>
@@ -437,16 +516,19 @@
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
+<!-- ════════════════════════════════════════
      CONTACT
-════════════════════════════════════════════════ -->
+════════════════════════════════════════ -->
 <section id="contact" class="section contact-section">
     <div class="wrap">
         <div class="contact-inner">
-            <!-- Left: Headline + info -->
+            <!-- Left -->
             <div class="contact-left reveal" data-delay="0">
                 <div class="eyebrow">Start a Project</div>
-                <h2 class="contact-h2">Let's build<br>something<br><em>remarkable</em><br>together.</h2>
+                <h2 class="contact-h2">
+                    Let's build<br>something<br><em>remarkable</em><br>together.
+                </h2>
+
                 <div class="contact-details">
                     <a href="mailto:contact@storyframes.studio" class="cd-item">
                         <i class="fa-regular fa-envelope"></i>
@@ -461,11 +543,12 @@
                         <span>Lisbon, Portugal — Working Worldwide</span>
                     </div>
                 </div>
+
                 <div class="contact-socials">
                     <a href="#" aria-label="Instagram" class="cs-link"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok" class="cs-link"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" aria-label="YouTube" class="cs-link"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" aria-label="Vimeo" class="cs-link"><i class="fa-brands fa-vimeo-v"></i></a>
+                    <a href="#" aria-label="TikTok"    class="cs-link"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"   class="cs-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Vimeo"     class="cs-link"><i class="fa-brands fa-vimeo-v"></i></a>
                 </div>
             </div>
 
@@ -478,7 +561,7 @@
                             <input type="text" id="cf-name" placeholder="Your name" required>
                         </div>
                         <div class="cf-field">
-                            <label for="cf-email">Email</label>
+                            <label for="cf-email">Email Address</label>
                             <input type="email" id="cf-email" placeholder="your@email.com" required>
                         </div>
                     </div>
@@ -487,8 +570,8 @@
                             <label for="cf-type">Project Type</label>
                             <select id="cf-type">
                                 <option value="" disabled selected>Select a service</option>
-                                <option>Videography</option>
-                                <option>Photography</option>
+                                <option>Cinematic Videography</option>
+                                <option>Fine-Art Photography</option>
                                 <option>Post-Production</option>
                                 <option>Full Production Package</option>
                                 <option>Other / Not Sure Yet</option>
@@ -515,7 +598,7 @@
                     </div>
                     <button type="submit" class="cf-submit" id="cf-submit-btn">
                         <span class="cf-submit-text">Send Message</span>
-                        <span class="cf-submit-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="cf-submit-icon"><i class="fa-solid fa-paper-plane"></i></span>
                     </button>
                     <div class="cf-success" id="cfSuccess">
                         <i class="fa-solid fa-circle-check"></i>
@@ -527,13 +610,13 @@
     </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     FOOTER — Premium 3-column layout
-════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
 <footer class="footer">
     <div class="wrap">
         <div class="footer-top">
-            <!-- Col 1: Brand -->
+            <!-- Brand -->
             <div class="footer-brand">
                 <div class="footer-logo-wrap">
                     <div class="footer-logo-mark">
@@ -548,17 +631,17 @@
                 </div>
             </div>
 
-            <!-- Col 2: Navigation -->
+            <!-- Navigation -->
             <div class="footer-links-col">
                 <h4>Navigation</h4>
-                <a href="#work"><i class="fa-solid fa-chevron-right"></i> Our Work</a>
+                <a href="#work">    <i class="fa-solid fa-chevron-right"></i> Our Work</a>
                 <a href="#services"><i class="fa-solid fa-chevron-right"></i> Services</a>
-                <a href="#about"><i class="fa-solid fa-chevron-right"></i> The Studio</a>
-                <a href="#reviews"><i class="fa-solid fa-chevron-right"></i> Clients</a>
-                <a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact Us</a>
+                <a href="#about">   <i class="fa-solid fa-chevron-right"></i> The Studio</a>
+                <a href="#reviews"> <i class="fa-solid fa-chevron-right"></i> Clients</a>
+                <a href="#contact"> <i class="fa-solid fa-chevron-right"></i> Contact Us</a>
             </div>
 
-            <!-- Col 3: Contact -->
+            <!-- Contact -->
             <div class="footer-contact-col">
                 <h4>Get In Touch</h4>
                 <a href="mailto:contact@storyframes.studio" class="footer-contact-item">
@@ -572,9 +655,9 @@
                 </div>
                 <div class="footer-socials-row">
                     <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                    <a href="#" aria-label="TikTok">   <i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube">  <i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Vimeo">    <i class="fa-brands fa-vimeo-v"></i></a>
                 </div>
             </div>
         </div>
