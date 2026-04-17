@@ -2,25 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>StoryInFrames Studio | Cinematic Videography &amp; Photography</title>
     <meta name="description" content="Premium cinematic videography and photography for brands, luxury events and digital storytelling. Based in Lisbon, working worldwide.">
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" href="favicon.svg">
 
-    <style>
-      :root{--bg:#ffffff;--gold:#b36020;--ink:#0a0908;}
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      html{scroll-behavior:smooth}
-      body{background:#ffffff;color:#1e1c1a;font-family:'DM Sans',sans-serif;overflow-x:hidden}
-      .nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.5rem 3rem}
-    </style>
+    <!-- Theme colour (mobile browser bar) -->
+    <meta name="theme-color" content="#0a0908">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="StoryInFrames">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="StoryInFrames Studio">
+    <meta property="og:description" content="Premium cinematic videography and photography — Europe &amp; Worldwide.">
+    <meta property="og:type" content="website">
+
+    <!-- DNS prefetch for third-party domains -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"></noscript>
 
+    <!-- Critical inline CSS — enough to render above-the-fold without FOUT -->
+    <style>
+      :root{--bg:#ffffff;--gold:#b36020;--ink:#0a0908;--sans:'Montserrat',system-ui,sans-serif;--serif:'Cormorant Garamond',Georgia,serif;}
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+      body{background:#ffffff;color:#1e1c1a;font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      .nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.2rem 2rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+      .nav-wrap{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto}
+      .nav-logo-mark{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:#0a0908;border-radius:6px;flex-shrink:0}
+      .nav-brand{display:flex;align-items:center;gap:.7rem;font-family:var(--sans);font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#0a0908;text-decoration:none}
+      /* Prevent layout shift on load */
+      .hero{min-height:100svh;position:relative;overflow:hidden}
+      img{max-width:100%;height:auto}
+    </style>
+
+    <!-- Fonts — only needed weights, display=swap prevents FOUT -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap"
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
+
+    <!-- Font Awesome — deferred, non-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
