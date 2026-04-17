@@ -4,311 +4,455 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StoryInFrames Studio | Cinematic Videography & Photography</title>
-    <meta name="description" content="Premium videography and photography for brands, events, and digital storytelling.">
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for standard icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Premium videography and photography for brands, events, and digital storytelling. Based in Europe, working worldwide.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎥</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">
-                <span class="logo-name">StoryInFrames</span>
-            </a>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#portfolio" class="nav-link">Projects</a>
-                <a href="#reviews" class="nav-link">Testimonials</a>
-            </div>
-            <a href="#contact" class="nav-btn">Contact us</a>
-            <button class="burger" id="burger" aria-label="Menu">
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  NAVBAR                                           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="#home" class="nav-logo">
+            <i class="fa-solid fa-film nav-logo-icon"></i>
+            <span class="logo-text">StoryInFrames</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#reviews" class="nav-link">Reviews</a>
+        </div>
+        <div class="nav-right">
+            <a href="#contact" class="nav-cta">Let's Talk &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <button class="burger" id="burger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero pixelency-hero" id="home">
-        <!-- Ambient Background Glow -->
-        <div class="bg-glow"></div>
-        
-        <div class="hero-content">
-            <h1 class="h-title">We Craft Cinematic<br>— <span class="h-serif">Stories</span> that<br>Move People</h1>
-            
-            <!-- Flower Badge -->
-            <div class="flower-badge">
-                <span class="fb-num">5+</span>
-                <span class="fb-text">Years Cinematic<br>Experience</span>
-            </div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  HERO SECTION                                     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+    <!-- Ambient glow blobs -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
 
-            <div class="hero-action-row">
-                <p class="h-sub">Premium visual production tailored to elevate your brand. <span style="color: var(--accent); font-weight: 600;">Helping you capture emotion</span>, tell stories, and grow.</p>
-                <a href="#contact" class="btn btn-pill-yellow">Let's Talk <i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg); display: inline-block; margin-left: 5px;"></i></a>
-            </div>
+    <div class="hero-inner">
+        <!-- LEFT: Big headline -->
+        <div class="hero-text">
+            <p class="hero-eyebrow"><span class="dot"></span> Cinematic Studio</p>
+            <h1 class="hero-headline">
+                We Build<br>
+                — <em class="serif-em">Stories</em> that<br>
+                Stand Out
+            </h1>
         </div>
-    </section>
 
-    <!-- MARQUEE BAND (Premium Motion) -->
-    <div class="marquee-section">
-        <div class="marquee-track">
-            <!-- Set 1 -->
-            <div class="marquee-item"><span class="m-dot"></span> Cinematic Videography</div>
-            <div class="marquee-item"><span class="m-dot"></span> Fine-Art Photography</div>
-            <div class="marquee-item"><span class="m-dot"></span> Commercial Campaigns</div>
-            <div class="marquee-item"><span class="m-dot"></span> Full-Scale Post Production</div>
-            <div class="marquee-item"><span class="m-dot"></span> Brand Storytelling</div>
-            <!-- Set 2 for infinite loop -->
-            <div class="marquee-item"><span class="m-dot"></span> Cinematic Videography</div>
-            <div class="marquee-item"><span class="m-dot"></span> Fine-Art Photography</div>
-            <div class="marquee-item"><span class="m-dot"></span> Commercial Campaigns</div>
-            <div class="marquee-item"><span class="m-dot"></span> Full-Scale Post Production</div>
-            <div class="marquee-item"><span class="m-dot"></span> Brand Storytelling</div>
+        <!-- RIGHT: Badge + action -->
+        <div class="hero-right">
+            <!-- Morphing flower badge -->
+            <div class="hero-badge">
+                <span class="badge-num">5+</span>
+                <span class="badge-label">Years<br>Experience</span>
+            </div>
+
+            <!-- Sub copy + CTA row -->
+            <div class="hero-action">
+                <p class="hero-sub">Easily connect your cinematic vision to reality — <strong>Helping you capture emotion</strong>, grow your brand, and leave a lasting impression.</p>
+                <a href="#contact" class="btn-yellow" id="hero-cta">
+                    Let's Talk
+                    <span class="btn-circle"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- SHOWREEL -->
-    <section class="section showreel" id="showreel">
-        <div class="sec-head">
-            <h2 class="sec-title">Featured Showreel</h2>
-            <p class="sec-desc">A curated glimpse into our latest cinematic work — where every frame is crafted with intention, emotion, and precision.</p>
+    <!-- Portfolio image grid -->
+    <div class="hero-gallery">
+        <div class="hg-item hg-sm">
+            <img src="assets/portfolio_photo.png" alt="Photography work">
         </div>
-        <div class="showreel-hero-grid">
-            <div class="video-container main-video">
-                <img src="assets/hero_cinematic.png" alt="Showreel Main" class="sr-img">
-                <div class="video-play-btn">
-                    <i class="fa-solid fa-play play-icon"></i>
-                </div>
-            </div>
-            <div class="sr-side-photos">
-                <div class="sr-photo-wrap"><img src="assets/portfolio_wedding.png" alt="Wedding Film" class="sr-photo"></div>
-                <div class="sr-photo-wrap"><img src="assets/portfolio_commercial.png" alt="Commercial Shoot" class="sr-photo"></div>
-                <div class="sr-photo-wrap"><img src="assets/portfolio_travel.png" alt="Travel Documentary" class="sr-photo"></div>
+        <div class="hg-item hg-md">
+            <img src="assets/portfolio_commercial.png" alt="Commercial work">
+            <div class="hg-overlay">
+                <span>View Projects</span>
             </div>
         </div>
-    </section>
+        <div class="hg-item hg-sm">
+            <img src="assets/portfolio_wedding.png" alt="Wedding film">
+        </div>
+        <div class="hg-item hg-tall">
+            <img src="assets/portfolio_travel.png" alt="Travel documentary">
+        </div>
+    </div>
+</section>
 
-    <!-- SERVICES (Bento Box Layout based on screenshot) -->
-    <section class="section services" id="services">
-        <div class="sec-head">
-            <h2 class="sec-title">What We Do</h2>
-            <p class="sec-desc">We offer end-to-end visual production tailored to elevate your brand and tell your story with impact.</p>
-        </div>
-        <div class="bento-grid">
-            <div class="bento-card">
-                <div class="b-icon"><i class="fa-solid fa-film"></i></div>
-                <h3>Videography</h3>
-                <p>High-end cinematic video production designed to capture emotion, tell stories, and elevate your brand presence.</p>
-            </div>
-            <div class="bento-card">
-                <div class="b-icon"><i class="fa-solid fa-camera"></i></div>
-                <h3>Photography</h3>
-                <p>Professional photography that blends creativity and precision to create visuals that stand out and connect.</p>
-            </div>
-            <div class="bento-card highlight-card">
-                <div class="b-icon"><i class="fa-solid fa-sliders"></i></div>
-                <h3>Editing & Post-Production</h3>
-                <p>Seamless editing, color grading, and storytelling that transform raw footage into powerful visual experiences.</p>
-            </div>
-            <div class="bento-card">
-                <div class="b-icon"><i class="fa-brands fa-instagram"></i></div>
-                <h3>Social Media Content</h3>
-                <p>Engaging, scroll-stopping content optimized for platforms like Instagram, TikTok, and YouTube.</p>
-            </div>
-        </div>
-    </section>
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  SCROLLING MARQUEE BAND                           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="marquee-band">
+    <div class="marquee-track">
+        <span><i class="fa-solid fa-circle-small"></i> Cinematic Videography</span>
+        <span><i class="fa-solid fa-circle-small"></i> Fine-Art Photography</span>
+        <span><i class="fa-solid fa-circle-small"></i> Commercial Campaigns</span>
+        <span><i class="fa-solid fa-circle-small"></i> Post-Production & Editing</span>
+        <span><i class="fa-solid fa-circle-small"></i> Brand Storytelling</span>
+        <span><i class="fa-solid fa-circle-small"></i> Cinematic Videography</span>
+        <span><i class="fa-solid fa-circle-small"></i> Fine-Art Photography</span>
+        <span><i class="fa-solid fa-circle-small"></i> Commercial Campaigns</span>
+        <span><i class="fa-solid fa-circle-small"></i> Post-Production & Editing</span>
+        <span><i class="fa-solid fa-circle-small"></i> Brand Storytelling</span>
+    </div>
+</div>
 
-    <!-- PORTFOLIO (List layout based on screenshot) -->
-    <section class="section portfolio" id="portfolio">
-        <div class="sec-head">
-            <h2 class="sec-title">Selected Work</h2>
-            <p class="sec-desc">Explore a collection of our latest projects — crafted with passion, precision, and a cinematic vision.</p>
-        </div>
-        
-        <div class="project-list">
-            <div class="p-list-item">
-                <span class="p-num">1</span>
-                <span class="p-name">Commercial Brand Campaign</span>
-                <i class="fa-solid fa-arrow-right"></i>
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  ABOUT – Smart, Fast, Creative                    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section about-section" id="about">
+    <div class="container">
+        <div class="about-card">
+            <div class="about-top">
+                <p class="sec-eyebrow"><span class="dot"></span> About Us</p>
+                <h2 class="about-headline">Smart, fast, <em class="serif-em">and Creative</em><br>— Delivering purposeful<br>cinematic Experiences.</h2>
             </div>
-            <div class="p-list-item active-p">
-                <div class="p-active-bg"></div>
-                <span class="p-num">2</span>
-                <span class="p-name">Cinematic Wedding Experience</span>
-                <!-- Hovering floating images specific to active state -->
-                <div class="floating-imgs">
-                    <img src="assets/portfolio_wedding.png" alt="Wedding" class="f-img fi-1">
-                    <img src="assets/portfolio_photo.png" alt="Photo" class="f-img fi-2">
-                </div>
-            </div>
-            <div class="p-list-item">
-                <span class="p-num">3</span>
-                <span class="p-name">Travel & Documentary Series</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="p-list-item">
-                <span class="p-num">4</span>
-                <span class="p-name">Corporate Branding Visuals</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT (Pixelency Style) -->
-    <section class="section px-about" id="about">
-        <div class="px-about-inner">
-            <span class="px-label"><span class="m-dot"></span> About Us</span>
-            <h2 class="px-title-left">Smart, fast, <span class="h-serif" style="font-weight: 400; color: var(--text-3);">and Creative</span><br>— Cinematic delivery of purposeful<br>visual Experiences.</h2>
-            
-            <div class="px-stats-grid">
-                <div class="px-stat-card">
+            <div class="about-stats">
+                <div class="stat-card">
                     <h3>4x</h3>
-                    <p>increase in brand engagement</p>
+                    <p>meetings<br>booked</p>
                 </div>
-                <div class="px-stat-card">
+                <div class="stat-card">
+                    <h3>2x</h3>
+                    <p>increase in<br>engagement</p>
+                </div>
+                <div class="stat-card">
                     <h3>200+</h3>
-                    <p>commercial shoots delivered</p>
-                </div>
-                <div class="px-stat-card">
-                    <h3>99%</h3>
-                    <p>client satisfaction score</p>
+                    <p>projects<br>delivered</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- TESTIMONIALS (Horizontal Cards like Screen) -->
-    <section class="section testimonials" id="reviews">
-        <div class="sec-head">
-            <h2 class="sec-title">What Clients Say</h2>
-        </div>
-        <div class="t-scroll">
-            <div class="t-card">
-                <div class="t-profile">
-                    <strong>Creative Director</strong>
-                    <span>Global Agency</span>
-                </div>
-                <p class="t-text">“Absolutely incredible work. The storytelling, the visuals — everything exceeded our expectations.”</p>
-                <div class="t-stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  SERVICES                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section services-section" id="services">
+    <div class="container">
+        <div class="services-header">
+            <div class="services-header-left">
+                <p class="sec-eyebrow"><span class="dot"></span> Services</p>
             </div>
-            <div class="t-card">
-                <div class="t-profile">
-                    <strong>CEO</strong>
-                    <span>Tech Startup</span>
-                </div>
-                <p class="t-text">“Professional, creative, and highly reliable. We’ll definitely work together again.”</p>
-                <div class="t-stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-            </div>
-            <div class="t-card">
-                <div class="t-profile">
-                    <strong>Event Organizer</strong>
-                    <span>Luxury Events</span>
-                </div>
-                <p class="t-text">“They didn’t just deliver a video — they delivered an experience.”</p>
-                <div class="t-stars">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stats Row -->
-        <div class="stats-row">
-            <div class="stat">
-                <h3>200+</h3>
-                <p>Unique projects<br>completed</p>
-            </div>
-            <div class="stat">
-                <h3>180+</h3>
-                <p>Satisfied clients<br>worldwide</p>
-            </div>
-            <div class="stat">
-                <h3>5/5</h3>
-                <p>Outstanding client<br>reviews</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT (Bento Layout) -->
-    <section class="section contact" id="contact">
-        <div class="sec-head head-left">
-            <h2 class="sec-title">Let’s Create Something Powerful Together</h2>
-            <p class="sec-desc">Have a vision in mind? Let’s bring it to life with cinematic storytelling that stands out and makes an impact. Available worldwide — ready to work with you wherever you are.</p>
-            <div class="c-btns">
-                <a href="#contact" class="btn-pill-yellow">Book a Project <i class="fa-solid fa-arrow-right" style="transform: rotate(-45deg);"></i></a>
+            <div class="services-header-right">
+                <h2 class="sec-title">We Deliver — <em class="serif-em" style="font-weight:400">Comprehensive</em><br>Solutions to help businesses<br>Grow and thrive.</h2>
             </div>
         </div>
 
-        <div class="contact-bento">
-            <!-- Say Hi Block -->
-            <div class="c-box form-box d-box">
-                <h3>Get In Touch</h3>
-                <p>Tell us about your project, your ideas, or your vision.</p>
-                <form class="contact-form" onsubmit="event.preventDefault();">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Project Details" required></textarea>
-                    <button class="btn-pill-yellow" type="submit" style="width: 100%; justify-content: center; border:none;">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+        <!-- Service rows -->
+        <div class="services-list">
+            <!-- 01 -->
+            <div class="srv-row">
+                <div class="srv-left">
+                    <span class="srv-num">01</span>
+                    <h3 class="srv-name">Videography</h3>
+                </div>
+                <div class="srv-center">
+                    <img src="assets/portfolio_commercial.png" alt="Videography" class="srv-img">
+                </div>
+                <div class="srv-right">
+                    <p class="srv-tag">→ Video Services</p>
+                    <ul>
+                        <li>Cinematic Commercials</li>
+                        <li>Brand Documentaries</li>
+                        <li>Event Coverage</li>
+                        <li>Music Videos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="srv-row">
+                <div class="srv-left">
+                    <span class="srv-num">02</span>
+                    <h3 class="srv-name">Photography</h3>
+                </div>
+                <div class="srv-center">
+                    <img src="assets/portfolio_photo.png" alt="Photography" class="srv-img">
+                    <span class="srv-float-num">15</span>
+                </div>
+                <div class="srv-right">
+                    <p class="srv-tag">→ Photography</p>
+                    <ul>
+                        <li>Portrait & Editorial</li>
+                        <li>Product Shoots</li>
+                        <li>Lifestyle & Fashion</li>
+                        <li>Live Events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="srv-row">
+                <div class="srv-left">
+                    <span class="srv-num">03</span>
+                    <h3 class="srv-name">Post-Production</h3>
+                </div>
+                <div class="srv-center">
+                    <img src="assets/portfolio_wedding.png" alt="Post Production" class="srv-img">
+                </div>
+                <div class="srv-right">
+                    <p class="srv-tag">→ Editing</p>
+                    <ul>
+                        <li>Color Grading</li>
+                        <li>Video Editing</li>
+                        <li>Sound Design</li>
+                        <li>Motion Graphics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PROCESS / WORK                                   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section process-section">
+    <div class="container">
+        <div class="process-grid">
+            <div class="process-left">
+                <p class="sec-eyebrow"><span class="dot"></span> Work Process</p>
+                <h2 class="process-headline">Our Process design, and<br>Deliver Simplified</h2>
+                <a href="#contact" class="btn-yellow btn-sm" id="process-cta">
+                    Let's Talk
+                    <span class="btn-circle"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <div class="process-steps">
+                    <div class="step">
+                        <span class="step-icon"><i class="fa-solid fa-comments"></i></span>
+                        <span class="step-label">Discovery & Briefing</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-icon"><i class="fa-solid fa-lightbulb"></i></span>
+                        <span class="step-label">Ideas & Concepts</span>
+                        <p class="step-desc">We follow a simple, results-driven process; bringing your idea to life, from understanding your goals to designing and developing.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-icon"><i class="fa-solid fa-pen-ruler"></i></span>
+                        <span class="step-label">Production & Design</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-icon"><i class="fa-solid fa-rocket"></i></span>
+                        <span class="step-label">Delivery & Launch</span>
+                    </div>
+                </div>
+            </div>
+            <div class="process-right">
+                <img src="assets/owner_rezaul.jpg" alt="Rezaul - Founder & Cinematographer" class="process-img">
+                <div class="process-img-tag">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <span>"Every frame is a canvas"</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  PORTFOLIO / CASE STUDIES                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section portfolio-section" id="portfolio">
+    <div class="container">
+        <div class="portfolio-header">
+            <p class="sec-eyebrow"><span class="dot"></span> Case Studies</p>
+            <div class="portfolio-title-row">
+                <h2 class="sec-title">See Our <em class="serif-em">All Latest</em><br>Creative Work</h2>
+                <a href="#contact" class="btn-yellow" id="portfolio-cta">
+                    View All
+                    <span class="btn-circle"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+        <div class="portfolio-grid">
+            <div class="pg-card pg-large">
+                <img src="assets/portfolio_commercial.png" alt="Commercial Campaign">
+                <div class="pg-overlay">
+                    <span class="pg-label">Commercial Campaign</span>
+                    <span class="pg-num">021</span>
+                </div>
+            </div>
+            <div class="pg-card pg-small">
+                <img src="assets/portfolio_wedding.png" alt="Wedding Cinematic">
+                <div class="pg-overlay">
+                    <span class="pg-label">Wedding Film</span>
+                </div>
+            </div>
+            <div class="pg-card pg-small">
+                <img src="assets/portfolio_photo.png" alt="Fine Art Photography">
+                <div class="pg-overlay">
+                    <span class="pg-label">Fashion Editorial</span>
+                </div>
+            </div>
+            <div class="pg-card pg-medium">
+                <img src="assets/portfolio_travel.png" alt="Travel Documentary">
+                <div class="pg-overlay">
+                    <span class="pg-label">Travel Documentary</span>
+                    <span class="pg-num">009</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  TESTIMONIALS                                     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section testimonials-section" id="reviews">
+    <div class="container">
+        <p class="sec-eyebrow"><span class="dot"></span> Client Reviews</p>
+        <h2 class="sec-title" style="margin-bottom: 3.5rem;">What Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="t-card">
+                <div class="t-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Absolutely incredible work. The storytelling, the visuals — everything exceeded our expectations. A truly cinematic experience."</p>
+                <div class="t-author">
+                    <div class="t-avatar">CD</div>
+                    <div>
+                        <strong>Creative Director</strong>
+                        <span>Global Agency</span>
+                    </div>
+                </div>
+            </div>
+            <div class="t-card">
+                <div class="t-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Professional, creative, and highly reliable. The quality of work delivered was far beyond what we imagined. We'll definitely work again."</p>
+                <div class="t-author">
+                    <div class="t-avatar">JM</div>
+                    <div>
+                        <strong>CEO</strong>
+                        <span>Tech Startup, Berlin</span>
+                    </div>
+                </div>
+            </div>
+            <div class="t-card t-card-accent">
+                <div class="t-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"They didn't just deliver a video — they delivered an experience. Our guests were moved. Our brand was elevated."</p>
+                <div class="t-author">
+                    <div class="t-avatar">EO</div>
+                    <div>
+                        <strong>Event Organizer</strong>
+                        <span>Luxury Events, Lisbon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  CONTACT                                          -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Left: Text + info -->
+            <div class="contact-left">
+                <p class="sec-eyebrow"><span class="dot"></span> Get In Touch</p>
+                <h2 class="contact-headline">Let's Create<br><em class="serif-em">Something</em><br>Powerful Together</h2>
+                <p class="contact-desc">Have a vision in mind? Let's bring it to life with cinematic storytelling that stands out and makes an impact. Available worldwide.</p>
+                <div class="contact-info">
+                    <div class="ci-item">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span>contact@storyframes.studio</span>
+                    </div>
+                    <div class="ci-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+351 920 635 234</span>
+                    </div>
+                    <div class="ci-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Lisbon, Portugal / Worldwide</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Right: Form -->
+            <div class="contact-right">
+                <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block';">
+                    <div class="form-group">
+                        <input type="text" id="cf-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="cf-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="cf-service">
+                            <option value="" disabled selected>Project Type</option>
+                            <option>Videography</option>
+                            <option>Photography</option>
+                            <option>Post-Production</option>
+                            <option>Full Package</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="cf-message" placeholder="Tell us about your vision..." required rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-yellow btn-full" id="form-submit">
+                        Send Message
+                        <span class="btn-circle"><i class="fa-solid fa-arrow-right"></i></span>
+                    </button>
+                    <p class="form-success" style="display:none; color: var(--accent); margin-top:1rem; font-weight:600;">✓ Message sent! We'll get back to you shortly.</p>
                 </form>
             </div>
-            <!-- Info Blocks -->
-            <div class="c-info-grid">
-                <div class="c-box i-box">
-                    <div class="i-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div>
-                        <span>Email</span>
-                        <strong>contact@storyframes.studio</strong>
-                    </div>
-                </div>
-                <div class="c-box i-box">
-                    <div class="i-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div>
-                        <span>Phone / WhatsApp</span>
-                        <strong>+351 920 635 234</strong>
-                    </div>
-                </div>
-                <div class="c-box i-box">
-                    <div class="i-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div>
-                        <span>Location</span>
-                        <strong>Lisbon, Portugal / Worldwide</strong>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="f-inner">
-            <div class="f-brand">
-                <span class="logo-name">StoryInFrames</span>
-                <p>Crafting stories, frame by frame.</p>
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  FOOTER                                           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <i class="fa-solid fa-film" style="color: var(--accent); font-size:1.5rem;"></i>
+                <span class="logo-text">StoryInFrames</span>
+                <p>Crafting cinematic stories, frame by frame.</p>
             </div>
-            <div class="f-links">
+            <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#portfolio">Work</a>
                 <a href="#services">Services</a>
+                <a href="#portfolio">Work</a>
+                <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </div>
-            <div class="f-social">
+            <div class="footer-social">
                 <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
-        <div class="f-copyright">
-            © 2026 StoryInFrames Studio. All rights reserved.
+        <div class="footer-bottom">
+            <span>© 2026 StoryInFrames Studio. All rights reserved.</span>
+            <span>Lisbon, Portugal</span>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,136 +1,111 @@
 /* =============================================
-   STORYINFRAMES STUDIO — DARK BENTO UI SCRIPT
+   StoryInFrames — script.js
+   Navbar scroll, burger menu, scroll animations
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ─── NAVBAR & SCROLL ─────────────────────── */
+  // ─── Navbar scroll effect ─────────────────────
   const navbar = document.getElementById('navbar');
-  const menu   = document.getElementById('navMenu');
-  const burger = document.getElementById('burger');
-  const links  = document.querySelectorAll('.nav-link, .nav-btn');
-
   window.addEventListener('scroll', () => {
-    if (navbar) {
-      navbar.style.padding = window.scrollY > 50 ? '1rem 0' : '1.5rem 0';
-      navbar.style.background = window.scrollY > 50 ? 'rgba(11, 13, 16, 0.95)' : 'rgba(11, 13, 16, 0.8)';
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
     }
+
+    // Update active nav link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.scrollY + 120;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      const link = document.querySelector(`.nav-link[href="#${id}"]`);
+      if (link) {
+        if (scrollY >= top && scrollY < top + height) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }
+    });
   }, { passive: true });
 
-  if (burger) {
+  // ─── Burger menu toggle ───────────────────────
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
     burger.addEventListener('click', () => {
-      burger.classList.toggle('on');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-      // Basic mobile transition handled here
-      if(menu.style.display === 'flex') {
-        menu.style.position = 'fixed';
-        menu.style.top = '70px';
-        menu.style.left = '0';
-        menu.style.width = '100%';
-        menu.style.background = 'rgba(11, 13, 16, 0.98)';
-        menu.style.flexDirection = 'column';
-        menu.style.padding = '2rem';
-        menu.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.contains('open');
+      burger.setAttribute('aria-expanded', isOpen);
+      // Animate burger lines
+      const spans = burger.querySelectorAll('span');
+      if (isOpen) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
+    });
+
+    // Close nav on link click
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.querySelectorAll('span').forEach(s => {
+          s.style.transform = '';
+          s.style.opacity = '';
+        });
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) {
+        navLinks.classList.remove('open');
       }
     });
   }
 
-  links.forEach(l => {
-    l.addEventListener('click', () => {
-      if (window.innerWidth <= 768 && menu) {
-        menu.style.display = 'none';
-        if (burger) burger.classList.remove('on');
+  // ─── Intersection Observer (scroll animations) ─
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  // Add fade-up class to elements
+  const animatables = document.querySelectorAll(
+    '.stat-card, .srv-row, .pg-card, .t-card, .step, .about-card, .process-headline, .contact-left, .contact-right'
+  );
+  animatables.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = `opacity 0.6s ease ${i * 0.07}s, transform 0.6s ease ${i * 0.07}s`;
+    observer.observe(el);
+  });
+
+  // Inject visible class styles
+  const style = document.createElement('style');
+  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+  document.head.appendChild(style);
+
+  // ─── Smooth scroll for all anchor links ───────
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
-
-  /* ─── SMOOTH SCROLL ───────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const targetId = a.getAttribute('href');
-      if (targetId === '#') return;
-      const t = document.querySelector(targetId);
-      if (t) { 
-        e.preventDefault(); 
-        window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); 
-      }
-    });
-  });
-
-  /* ─── PORTFOLIO HOVER INTERACTION ─────────── */
-  const pItems = document.querySelectorAll('.p-list-item');
-  pItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      // Remove active from all
-      pItems.forEach(el => {
-        el.classList.remove('active-p');
-        // If there's an existing floating images block, hide it
-        const imgs = el.querySelector('.floating-imgs');
-        if (imgs) imgs.remove();
-      });
-
-      // Add active to current
-      item.classList.add('active-p');
-      
-      // Inject the floating images dynamically to the hovered item
-      const floatingHtml = `
-        <div class="floating-imgs" style="opacity: 1; transform: translateY(10px);">
-            <img src="assets/portfolio_commercial.png" alt="Work" class="f-img fi-1">
-            <img src="assets/portfolio_wedding.png" alt="Work" class="f-img fi-2">
-        </div>
-      `;
-      item.insertAdjacentHTML('beforeend', floatingHtml);
-    });
-  });
-
-  /* ─── BENTO CARDS 3D TILT ─────────────────── */
-  document.querySelectorAll('.bento-card, .c-box').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      // subtle 3D tilt
-      const r = card.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width  - 0.5) * 6;
-      const y = ((e.clientY - r.top)  / r.height - 0.5) * -6;
-      card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) translateY(-5px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-
-  /* ─── FORM SUBMISSION ─────────────────────── */
-  const form = document.querySelector('.contact-form');
-  const btn = document.querySelector('.btn-arrow');
-  if (form && btn) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully';
-        btn.style.background = 'var(--accent)';
-        btn.style.color = 'var(--text-dark)';
-        form.reset();
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = 'var(--grad-main)';
-        }, 3000);
-      }, 1500);
-  /* ─── SCROLL REVEAL (Intersection Observer) ─ */
-  const sections = document.querySelectorAll('.sec-head, .bento-card, .p-list-item, .c-box, .t-card, .about-text, .why-us-minimal, .founder-image-card');
-  sections.forEach((el, index) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = (index % 3) * 0.1 + 's';
-  });
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 });
