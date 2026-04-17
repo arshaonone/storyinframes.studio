@@ -1597,5 +1597,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-stat-card { -webkit-backdrop-filter: none; backdrop-filter: none; }
   /* Disable tilt animations */
   .tilt-3d { transform: none !important; }
+  /* Free GPU layers — will-change uses a full GPU texture per element */
+  *, *::before, *::after { will-change: auto !important; }
+  /* Contain images so repaints don't cascade */
+  img { contain: strict; }
 }
 

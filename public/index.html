@@ -55,6 +55,9 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Preload LCP image — biggest performance win -->
+    <link rel="preload" as="image" href="assets/portfolio_commercial.png" fetchpriority="high">
 </head>
 <body>
 
@@ -278,7 +281,12 @@
 
         <div class="work-grid">
             <div class="wg-card wg-large reveal" data-delay="0">
-                <img src="assets/portfolio_commercial.png" alt="Commercial Campaign — Lisbon" loading="lazy" decoding="async">
+                <img src="assets/portfolio_commercial.png"
+                     alt="Commercial Campaign — Lisbon"
+                     loading="eager"
+                     fetchpriority="high"
+                     decoding="async"
+                     width="800" height="520">
                 <div class="wg-overlay"></div>
                 <span class="wg-num">001</span>
                 <div class="wg-info">
@@ -290,7 +298,11 @@
                 </div>
             </div>
             <div class="wg-card wg-small reveal" data-delay="1">
-                <img src="assets/portfolio_wedding.png" alt="Cinematic Wedding Film" loading="lazy" decoding="async">
+                <img src="assets/portfolio_wedding.png"
+                     alt="Cinematic Wedding Film"
+                     loading="lazy"
+                     decoding="async"
+                     width="500" height="520">
                 <div class="wg-overlay"></div>
                 <span class="wg-num">002</span>
                 <div class="wg-info">
@@ -302,7 +314,11 @@
                 </div>
             </div>
             <div class="wg-card wg-medium-a reveal" data-delay="2">
-                <img src="assets/portfolio_photo.png" alt="Fashion Editorial" loading="lazy" decoding="async">
+                <img src="assets/portfolio_photo.png"
+                     alt="Fashion Editorial"
+                     loading="lazy"
+                     decoding="async"
+                     width="800" height="360">
                 <div class="wg-overlay"></div>
                 <span class="wg-num">003</span>
                 <div class="wg-info">
