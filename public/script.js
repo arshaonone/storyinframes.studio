@@ -118,4 +118,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ─── CUSTOM CURSOR & MAGNETIC LINKS ──────── */
+  const ring = document.getElementById('cursorRing');
+  if (ring && window.matchMedia("(pointer: fine)").matches) {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+    });
+
+    const loopCursor = () => {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(loopCursor);
+    };
+    loopCursor();
+
+    document.addEventListener('mousedown', () => ring.classList.add('click'));
+    document.addEventListener('mouseup', () => ring.classList.remove('click'));
+
+    // Hover state
+    const hovers = 'a, button, .p-list-item, .bento-card, .t-card';
+    document.querySelectorAll(hovers).forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('on'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('on'));
+    });
+  }
+
+  /* ─── SCROLL REVEAL (Intersection Observer) ─ */
+  const sections = document.querySelectorAll('.sec-head, .bento-card, .p-list-item, .c-box, .t-card, .about-text, .why-us-minimal, .founder-image-card');
+  sections.forEach((el, index) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (index % 3) * 0.1 + 's';
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
 });
