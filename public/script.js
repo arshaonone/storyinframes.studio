@@ -1,111 +1,179 @@
-/* =============================================
+/* ============================================================
    StoryInFrames — script.js
-   Navbar scroll, burger menu, scroll animations
-   ============================================= */
+   Custom cursor · Navbar · Accordion · Drag scroll · Reveal
+   ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── Navbar scroll effect ─────────────────────
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+  /* ─── Custom Cursor ───────────────────────────────────── */
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
 
-    // Update active nav link based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.scrollY + 120;
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      const link = document.querySelector(`.nav-link[href="#${id}"]`);
-      if (link) {
-        if (scrollY >= top && scrollY < top + height) {
-          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      }
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (dot)  { dot.style.left = mx + 'px'; dot.style.top = my + 'px'; }
+  });
+
+  // Ring follows with lag
+  function animateRing() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover effects on interactive elements
+  const hoverTargets = document.querySelectorAll('a, button, .wg-card, .srv-top, .fs-frame');
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (ring) { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(212,145,90,0.8)'; }
     });
+    el.addEventListener('mouseleave', () => {
+      if (ring) { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.borderColor = 'rgba(212,145,90,0.5)'; }
+    });
+  });
+
+  /* ─── Navbar scroll / stuck ──────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      nav.classList.toggle('stuck', window.scrollY > 60);
+    }
+    updateActiveLink();
   }, { passive: true });
 
-  // ─── Burger menu toggle ───────────────────────
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const isOpen = navLinks.classList.contains('open');
-      burger.setAttribute('aria-expanded', isOpen);
-      // Animate burger lines
-      const spans = burger.querySelectorAll('span');
-      if (isOpen) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-      } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
-      }
-    });
-
-    // Close nav on link click
-    navLinks.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        burger.querySelectorAll('span').forEach(s => {
-          s.style.transform = '';
-          s.style.opacity = '';
-        });
-      });
-    });
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target)) {
-        navLinks.classList.remove('open');
+  function updateActiveLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const sy = window.scrollY + 140;
+    sections.forEach(sec => {
+      const link = document.querySelector(`.nl[href="#${sec.id}"]`);
+      if (!link) return;
+      if (sy >= sec.offsetTop && sy < sec.offsetTop + sec.offsetHeight) {
+        document.querySelectorAll('.nl').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       }
     });
   }
 
-  // ─── Intersection Observer (scroll animations) ─
-  const observer = new IntersectionObserver((entries) => {
+  /* ─── Burger menu ────────────────────────────────────── */
+  const burger = document.getElementById('burger');
+  const navCenter = document.getElementById('navCenter');
+  if (burger && navCenter) {
+    burger.addEventListener('click', () => {
+      const open = navCenter.classList.toggle('open');
+      document.body.style.overflow = open ? 'hidden' : '';
+      const [s1, s2] = burger.querySelectorAll('span');
+      if (open) {
+        s1.style.transform = 'rotate(42deg) translate(4px, 5px)';
+        s2.style.transform = 'rotate(-42deg) translate(4px, -5px)';
+      } else {
+        s1.style.transform = ''; s2.style.transform = '';
+      }
+    });
+    navCenter.querySelectorAll('.nl').forEach(l => {
+      l.addEventListener('click', () => {
+        navCenter.classList.remove('open');
+        document.body.style.overflow = '';
+        burger.querySelectorAll('span').forEach(s => s.style.transform = '');
+      });
+    });
+  }
+
+  /* ─── Accordion Services ──────────────────────────────── */
+  document.querySelectorAll('.srv').forEach(srv => {
+    const top = srv.querySelector('.srv-top');
+    if (!top) return;
+    top.addEventListener('click', () => {
+      const isOpen = srv.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.srv.open').forEach(s => s.classList.remove('open'));
+      // Open clicked if it wasn't open
+      if (!isOpen) srv.classList.add('open');
+    });
+  });
+  // Open first by default
+  const firstSrv = document.querySelector('.srv');
+  if (firstSrv) firstSrv.classList.add('open');
+
+  /* ─── Drag-to-scroll testimonials ───────────────────── */
+  const scroller = document.querySelector('.testimonials-scroller');
+  if (scroller) {
+    let isDown = false, startX, startScroll;
+    scroller.addEventListener('mousedown', e => {
+      isDown = true;
+      scroller.classList.add('grabbing');
+      startX = e.pageX - scroller.offsetLeft;
+      startScroll = scroller.scrollLeft;
+    });
+    scroller.addEventListener('mouseleave', () => { isDown = false; scroller.classList.remove('grabbing'); });
+    scroller.addEventListener('mouseup', () => { isDown = false; scroller.classList.remove('grabbing'); });
+    scroller.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scroller.offsetLeft;
+      scroller.scrollLeft = startScroll - (x - startX);
+    });
+  }
+
+  /* ─── Scroll-reveal observer ─────────────────────────── */
+  const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        const delay = parseFloat(entry.target.dataset.delay || 0) * 120;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  // Add fade-up class to elements
-  const animatables = document.querySelectorAll(
-    '.stat-card, .srv-row, .pg-card, .t-card, .step, .about-card, .process-headline, .contact-left, .contact-right'
-  );
-  animatables.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(28px)';
-    el.style.transition = `opacity 0.6s ease ${i * 0.07}s, transform 0.6s ease ${i * 0.07}s`;
-    observer.observe(el);
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Also reveal stat cards, wg-cards, ts-cards, steps
+  const autoReveal = document.querySelectorAll('.stat-card, .wg-card, .ts-card, .step, .as-item, .cd-item');
+  autoReveal.forEach((el, i) => {
+    el.style.opacity   = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s`;
+
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        obs.unobserve(el);
+      }
+    }, { threshold: 0.1 });
+    obs.observe(el);
   });
 
-  // Inject visible class styles
-  const style = document.createElement('style');
-  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-  document.head.appendChild(style);
+  /* ─── Contact form handler ───────────────────────────── */
+  window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('cf-submit-btn');
+    const success = document.getElementById('cfSuccess');
+    if (btn) { btn.disabled = true; btn.querySelector('.cf-submit-text').textContent = 'Sending…'; }
+    setTimeout(() => {
+      if (btn) { btn.style.display = 'none'; }
+      if (success) success.classList.add('show');
+    }, 900);
+  };
 
-  // ─── Smooth scroll for all anchor links ───────
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  /* ─── Smooth anchor scrolling ────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
+
+  /* ─── Filmstrip pause on hover (already CSS) ─────────── */
+  // headline subtle parallax on scroll
+  const headline = document.querySelector('.hero-headline-wrap');
+  window.addEventListener('scroll', () => {
+    if (headline) {
+      headline.style.transform = `translateY(${window.scrollY * 0.06}px)`;
+    }
+  }, { passive: true });
 
 });
