@@ -84,18 +84,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 @media (max-width: 768px) { .noise-overlay { display: none; } }
 
-/* ── Custom cursor ────────────────────────────────────────── */
-.cursor-dot, .cursor-ring {
-  position: fixed; border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
+
+/* ── 3D Tilt base ────────────────────────────────────────── */
+/* Applied via JS — tracks mouse per card, applies rotateXY   */
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.12s linear, box-shadow 0.3s var(--ease);
+  will-change: transform;
 }
-.cursor-dot { width: 5px; height: 5px; background: var(--gold); }
-.cursor-ring {
-  width: 30px; height: 30px;
-  border: 1.5px solid rgba(184,104,42,0.40);
-  transition: width 0.3s var(--spring), height 0.3s var(--spring), border-color 0.3s;
+.tilt-3d.tilt-reset {
+  transition: transform 0.65s var(--spring), box-shadow 0.55s var(--ease);
 }
+
 
 /* ── Reveal animations ────────────────────────────────────── */
 .reveal {
@@ -149,8 +149,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--sans); font-weight: 700; font-size: 0.75rem;
   letter-spacing: 0.09em; text-transform: uppercase;
   padding: 1rem 1.1rem 1rem 1.8rem; border-radius: var(--r);
-  transition: var(--t);
-  box-shadow: 0 8px 24px rgba(17,16,16,0.18);
+  transition: transform 0.25s var(--spring), box-shadow 0.25s, background 0.35s;
+  box-shadow: 0 8px 24px rgba(17,16,16,0.18), 0 4px 0 rgba(0,0,0,0.25);
+  transform: perspective(600px) translateZ(0);
 }
 .btn-primary .icon {
   width: 34px; height: 34px; border-radius: 8px;
@@ -160,21 +161,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .btn-primary:hover {
   background: var(--gold);
-  box-shadow: 0 14px 40px rgba(184,104,42,0.30);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(184,104,42,0.32), 0 4px 0 rgba(140,70,10,0.4);
+  transform: perspective(600px) translateY(-4px) translateZ(10px);
 }
-.btn-primary:hover .icon { transform: translateX(4px); }
+.btn-primary:active {
+  transform: perspective(600px) translateY(2px) translateZ(0);
+  box-shadow: 0 3px 10px rgba(17,16,16,0.20), 0 1px 0 rgba(0,0,0,0.30);
+}
+.btn-primary:hover .icon { transform: translateX(5px); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 0.75rem;
   background: transparent; border: 1.5px solid var(--brd-2);
   color: var(--ink-2); font-family: var(--sans); font-size: 0.75rem;
   font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 1rem 1.8rem; border-radius: var(--r); transition: var(--t);
+  padding: 1rem 1.8rem; border-radius: var(--r);
+  transition: transform 0.25s var(--spring), box-shadow 0.25s, border-color 0.35s, color 0.35s, background 0.35s;
+  box-shadow: 0 4px 0 rgba(17,16,16,0.08);
+  transform: perspective(600px) translateZ(0);
 }
 .btn-outline:hover {
   border-color: var(--gold); color: var(--gold);
-  background: var(--gold-pale); transform: translateY(-2px);
+  background: var(--gold-pale);
+  transform: perspective(600px) translateY(-4px) translateZ(8px);
+  box-shadow: 0 12px 30px rgba(184,104,42,0.18), 0 4px 0 rgba(184,104,42,0.25);
+}
+.btn-outline:active {
+  transform: perspective(600px) translateY(1px) translateZ(0);
+  box-shadow: 0 2px 0 rgba(184,104,42,0.20);
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -378,12 +392,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: var(--r-lg);
   padding: 1.6rem 2rem;
   display: flex; align-items: center; gap: 1.4rem;
-  box-shadow: var(--sh-sm);
-  transition: transform 0.45s var(--spring), box-shadow 0.45s, border-color 0.4s;
+  box-shadow: var(--sh-sm), 0 6px 0 rgba(17,16,16,0.06);
+  /* 3D tilt applied via JS; base just sets perspective origin */
+  transform: perspective(900px) translateZ(0);
+  transition: transform 0.12s linear, box-shadow 0.3s var(--ease);
+  will-change: transform;
 }
 .hero-stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--sh-lg);
+  box-shadow: var(--sh-lg), 0 12px 0 rgba(17,16,16,0.05);
   border-color: var(--gold-brd);
 }
 .hsc-icon {
@@ -432,6 +448,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .fs-track {
   display: flex; gap: 0.8rem; padding: 1.4rem 0;
   width: max-content; animation: filmscroll 40s linear infinite;
+  /* 3D perspective on track creates depth as frames pass by */
+  transform-style: preserve-3d;
+}
+.hero-filmstrip .wrap-perspective {
+  perspective: 1200px; perspective-origin: 50% 50%;
 }
 .hero-filmstrip:hover .fs-track { animation-play-state: paused; }
 
@@ -495,9 +516,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: var(--r-xl); cursor: pointer;
   background: var(--bg-stone);
   border: 1px solid var(--brd);
-  transition: border-color 0.5s, box-shadow 0.5s;
+  /* 3D tilt via JS */
+  transform: perspective(1200px) translateZ(0);
+  transition: transform 0.12s linear, box-shadow 0.35s var(--ease), border-color 0.5s;
+  will-change: transform;
 }
-.wg-card:hover { box-shadow: var(--sh-xl); }
+.wg-card:hover {
+  box-shadow: var(--sh-xl), 0 30px 0 -15px rgba(17,16,16,0.05);
+  border-color: rgba(184,104,42,0.20);
+}
 
 .wg-card img {
   width: 100%; height: 100%; object-fit: cover;
@@ -687,10 +714,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 1.5rem 1.4rem; background: #fff;
   border: 1px solid var(--brd); border-radius: var(--r-lg);
   display: flex; flex-direction: column; gap: 0.3rem;
-  box-shadow: var(--sh-sm);
-  transition: transform 0.45s var(--spring), box-shadow 0.45s, border-color 0.4s;
+  box-shadow: var(--sh-sm), 0 5px 0 rgba(17,16,16,0.05);
+  /* 3D tilt via JS */
+  transform: perspective(900px) translateZ(0);
+  transition: transform 0.12s linear, box-shadow 0.3s var(--ease), border-color 0.4s;
+  will-change: transform;
 }
-.as-item:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--gold-brd); }
+.as-item:hover {
+  box-shadow: var(--sh-lg), 0 8px 0 rgba(184,104,42,0.10);
+  border-color: var(--gold-brd);
+}
 .as-item strong { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: var(--gold); line-height: 1; }
 .as-item span   { font-family: var(--sans); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -718,16 +751,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 400px; flex-shrink: 0; background: #fff;
   border: 1px solid var(--brd); border-radius: var(--r-xl);
   padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem;
-  box-shadow: var(--sh-sm);
-  transition: transform 0.5s var(--spring), box-shadow 0.5s, border-color 0.4s;
+  box-shadow: var(--sh-sm), 0 6px 0 rgba(17,16,16,0.05);
+  /* 3D tilt via JS */
+  transform: perspective(1000px) translateZ(0);
+  transition: transform 0.12s linear, box-shadow 0.35s var(--ease), border-color 0.4s;
+  will-change: transform;
 }
 .ts-card:hover {
-  transform: translateY(-7px); box-shadow: var(--sh-lg); border-color: var(--gold-brd);
+  box-shadow: var(--sh-lg), 0 10px 0 rgba(17,16,16,0.04);
+  border-color: var(--gold-brd);
 }
 .ts-card-featured {
   background: var(--bg-off);
   border-color: var(--gold-brd);
-  box-shadow: 0 8px 40px rgba(184,104,42,0.12);
+  box-shadow: 0 8px 40px rgba(184,104,42,0.12), 0 6px 0 rgba(184,104,42,0.18);
 }
 .ts-stars { display: flex; gap: 0.22rem; }
 .ts-stars i { color: var(--gold); font-size: 0.72rem; }
