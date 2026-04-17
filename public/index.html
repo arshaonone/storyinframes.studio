@@ -9,10 +9,10 @@
 
     <!-- Critical CSS — prevents FOUC -->
     <style>
-      :root{--bg:#ffffff;--gold:#b8682a;--ink:#0e0c0a;}
+      :root{--bg:#06050a;--gold:#e09a50;--ink:#f0ecf7;}
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       html{scroll-behavior:smooth;font-size:16px}
-      body{background:var(--bg);color:#2e2a25;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+      body{background:var(--bg);color:#c4bdd4;font-family:'DM Sans',sans-serif;overflow-x:hidden}
       .nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.6rem 3rem;border-bottom:1px solid transparent}
     </style>
 
@@ -79,6 +79,12 @@
      HERO
 ════════════════════════════════════════ -->
 <section id="hero" class="hero">
+    <!-- Atmospheric depth orbs -->
+    <div class="hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb-3" aria-hidden="true"></div>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+
     <div class="hero-inner">
         <!-- Left: Content -->
         <div class="hero-left">
@@ -552,8 +558,9 @@
                 </div>
             </div>
 
-            <!-- Right: Form -->
+            <!-- Right: Glass form card -->
             <div class="contact-right reveal" data-delay="2">
+              <div class="cf-wrapper">
                 <form class="cf" id="contactForm" onsubmit="handleFormSubmit(event)">
                     <div class="cf-row cf-row-half">
                         <div class="cf-field">
@@ -605,6 +612,7 @@
                         <span>Message received! We'll be in touch within 24 hours.</span>
                     </div>
                 </form>
+              </div>
             </div>
         </div>
     </div>
