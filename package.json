@@ -2,14 +2,9 @@
   "name": "storyinframes.studio",
   "version": "1.0.0",
   "description": "StoryInFrames Studio - Cinematic Photography & Videography Portfolio",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "mkdir -p dist && cp -r assets *.html *.css *.js dist/"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "vite": "^5.0.0"
-  }
+  "dependencies": {}
 }
