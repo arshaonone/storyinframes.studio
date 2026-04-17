@@ -4,7 +4,9 @@
   "description": "StoryInFrames Studio - Cinematic Photography & Videography Portfolio",
   "main": "index.html",
   "scripts": {
-    "build": "mkdir -p dist && cp -r assets *.html *.css *.js dist/"
+    "build": "node build.js"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
 }
