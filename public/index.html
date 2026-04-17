@@ -12,7 +12,7 @@
       :root{--bg:#0a0908;--amber:#d4915a;--ink:#f5f0ea;}
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       html{scroll-behavior:smooth;font-size:16px}
-      body{background:var(--bg);color:#c2bdb6;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+      body{background:var(--bg);color:#c2bdb6;font-family:'Open Sans',sans-serif;overflow-x:hidden}
       .nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.5rem 3rem;border-bottom:1px solid transparent}
     </style>
 
@@ -21,10 +21,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Google Fonts: non-blocking with media trick -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap"></noscript>
+    <!-- Google Fonts: 5 premium fonts, non-blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap"></noscript>
 
     <!-- FontAwesome deferred (non-blocking) -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -64,7 +64,9 @@
 
         <div class="nav-end">
             <span class="nav-avail"><span class="avail-dot"></span>Available for projects</span>
-            <a href="#contact" class="nav-cta-btn" id="nav-cta">Start a Project</a>
+            <a href="#contact" class="nav-cta-btn" id="nav-cta">
+                <i class="fa-solid fa-paper-plane"></i> Start a Project
+            </a>
             <button class="nav-burger" id="burger" aria-label="Menu">
                 <span></span><span></span>
             </button>
@@ -115,6 +117,7 @@
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
                 <a href="#contact" class="btn-ghost" id="hero-contact-btn">
+                    <i class="fa-solid fa-calendar-check"></i>
                     <span>Book a Project</span>
                 </a>
             </div>
@@ -525,37 +528,63 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     FOOTER
+     FOOTER — Premium 3-column layout
 ════════════════════════════════════════════════ -->
 <footer class="footer">
     <div class="wrap">
         <div class="footer-top">
+            <!-- Col 1: Brand -->
             <div class="footer-brand">
-                <div class="footer-logo-mark">
-                    <span></span><span></span><span></span><span></span>
+                <div class="footer-logo-wrap">
+                    <div class="footer-logo-mark">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="footer-name">StoryInFrames</span>
                 </div>
-                <span class="footer-name">StoryInFrames Studio</span>
+                <p class="footer-desc">Premium cinematic videography and photography for brands, events, and digital storytelling. Based in Lisbon, working worldwide.</p>
+                <div class="footer-avail">
+                    <div class="footer-avail-dot"></div>
+                    Available for new projects
+                </div>
             </div>
-            <p class="footer-tagline">Crafting cinematic stories,<br>frame by frame.</p>
-        </div>
-        <div class="footer-mid">
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="#work">Work</a>
-                <a href="#services">Services</a>
-                <a href="#about">Studio</a>
-                <a href="#reviews">Clients</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <div class="footer-socials">
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+
+            <!-- Col 2: Navigation -->
+            <div class="footer-links-col">
+                <h4>Navigation</h4>
+                <a href="#work"><i class="fa-solid fa-chevron-right"></i> Our Work</a>
+                <a href="#services"><i class="fa-solid fa-chevron-right"></i> Services</a>
+                <a href="#about"><i class="fa-solid fa-chevron-right"></i> The Studio</a>
+                <a href="#reviews"><i class="fa-solid fa-chevron-right"></i> Clients</a>
+                <a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact Us</a>
+            </div>
+
+            <!-- Col 3: Contact -->
+            <div class="footer-contact-col">
+                <h4>Get In Touch</h4>
+                <a href="mailto:contact@storyframes.studio" class="footer-contact-item">
+                    <i class="fa-regular fa-envelope"></i> contact@storyframes.studio
+                </a>
+                <a href="tel:+351920635234" class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i> +351 920 635 234
+                </a>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i> Lisbon, Portugal — Worldwide
+                </div>
+                <div class="footer-socials-row">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <span>© 2026 StoryInFrames Studio. All rights reserved.</span>
-            <span>Lisbon, Portugal</span>
+            <span class="footer-copy">&copy; 2026 StoryInFrames Studio. All rights reserved.</span>
+            <span class="footer-note">
+                <i class="fa-solid fa-heart"></i>
+                Crafted with passion in Lisbon, Portugal
+            </span>
         </div>
     </div>
 </footer>

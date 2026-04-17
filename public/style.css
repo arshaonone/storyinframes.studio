@@ -1,16 +1,17 @@
 /* =========================================================
    STORYINFRAMES STUDIO
-   Design: Cinematic Editorial Dark — Original Creative UI
+   Design: Cinematic Editorial Dark
+   Fonts: Montserrat (brand) · Poppins (headings) · Open Sans (body)
+          Roboto (UI/buttons) · Lato (captions/eyebrows)
    Palette: Warm dark #0a0908 · Amber #d4915a · Warm white #f5f0ea
-   Fonts: Cormorant Garamond (display) + DM Sans (UI)
    ========================================================= */
 
-/* ─── Google Fonts ──────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+/* ─── Five Premium Google Fonts ─────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&family=Roboto:wght@400;500;700&family=Lato:wght@300;400;700&display=swap');
 
-/* ─── Design Tokens ─────────────────────────────────── */
+/* ─── Design Tokens ───────────────────────────────── */
 :root {
-  /* Warm cinematic dark */
+  /* Background layers */
   --bg:         #0a0908;
   --bg-1:       #100f0e;
   --bg-2:       #171513;
@@ -22,7 +23,7 @@
   --ink-3:      #7a7268;
   --ink-4:      #433f3a;
 
-  /* Amber accent — cinematic */
+  /* Amber accent */
   --amber:      #d4915a;
   --amber-2:    #e8a97a;
   --amber-dim:  rgba(212, 145, 90, 0.12);
@@ -36,23 +37,29 @@
   --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
   --t:          0.45s var(--ease);
+
+  /* ── Font stack assignments ────────────────────────── */
+  --f-brand:    'Montserrat', sans-serif;   /* Logo, brand name          */
+  --f-head:     'Poppins', sans-serif;      /* Section headings (h1-h3)  */
+  --f-body:     'Open Sans', sans-serif;    /* Body copy, paragraphs     */
+  --f-ui:       'Roboto', sans-serif;       /* Buttons, nav, form labels */
+  --f-caption:  'Lato', sans-serif;         /* Eyebrows, captions, tags  */
 }
 
-/* ─── Reset ─────────────────────────────────────────── */
+/* ─── Reset ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   background: var(--bg);
   color: var(--ink-2);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--f-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
-img { display: block; width: 100%; height: 100%; object-fit: cover; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
-input, textarea, select { font-family: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: var(--f-ui); }
+input, textarea, select { font-family: var(--f-ui); }
 
 /* ─── Global Layout ─────────────────────────────────── */
 .wrap {
@@ -101,24 +108,25 @@ img {
 }
 body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
 
-/* ─── Typography helpers ────────────────────────────── */
+/* ─── Typography helpers ──────────────────────────── */
 .sec-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 300;
+  font-family: var(--f-head);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
   color: var(--ink);
-  line-height: 1.12;
+  line-height: 1.18;
   letter-spacing: -0.01em;
 }
 .sec-h2 em {
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--amber);
 }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.7rem; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: var(--f-caption);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--amber); margin-bottom: 1.5rem;
 }
 .eyebrow::before {
@@ -146,29 +154,35 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
 .link-arrow:hover { color: var(--amber-2); }
 .link-arrow:hover i { transform: translateX(5px); }
 
-/* ─── Buttons ───────────────────────────────────────── */
+/* ─── Buttons ────────────────────────────────────── */
 .btn-amber {
   display: inline-flex; align-items: center; gap: 0.9rem;
-  background: var(--amber); color: var(--bg);
-  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem;
+  background: var(--amber); color: #0a0908;
+  font-family: var(--f-ui); font-weight: 700; font-size: 0.875rem;
+  letter-spacing: 0.03em; text-transform: uppercase;
   padding: 0.9rem 1rem 0.9rem 1.75rem;
-  border-radius: var(--radius); letter-spacing: 0.02em;
+  border-radius: var(--radius);
   transition: var(--t); cursor: pointer;
 }
-.btn-amber i {
+.btn-amber .bi {
   width: 32px; height: 32px; border-radius: 8px;
-  background: rgba(0,0,0,0.15);
-  display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+  background: rgba(0,0,0,0.18);
+  display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
   transition: transform 0.3s var(--ease-out);
+  flex-shrink: 0;
 }
 .btn-amber:hover { background: var(--amber-2); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(212,145,90,0.3); }
+.btn-amber:hover .bi { transform: translateX(3px); }
+/* Alias so old class still works */
+.btn-amber i { width: 32px; height: 32px; border-radius: 8px; background: rgba(0,0,0,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; transition: transform 0.3s var(--ease-out); flex-shrink: 0; }
 .btn-amber:hover i { transform: translateX(3px); }
 
 .btn-ghost {
-  display: inline-flex; align-items: center; gap: 0.9rem;
+  display: inline-flex; align-items: center; gap: 0.75rem;
   background: transparent;
   border: 1px solid var(--border-h);
-  color: var(--ink-2); font-size: 0.9rem; font-weight: 500;
+  color: var(--ink-2); font-family: var(--f-ui); font-size: 0.875rem; font-weight: 500;
+  letter-spacing: 0.02em;
   padding: 0.9rem 1.75rem; border-radius: var(--radius);
   transition: var(--t);
 }
@@ -200,11 +214,13 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
   max-width: 1340px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
 }
+/* ─── NAV brand — Montserrat */
 .nav-brand {
   display: flex; align-items: center; gap: 0.75rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-weight: 600; color: var(--ink);
-  letter-spacing: 0.02em; transition: color var(--t);
+  font-family: var(--f-brand);
+  font-size: 1.1rem; font-weight: 800; color: var(--ink);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color var(--t);
 }
 .nav-brand:hover { color: var(--amber); }
 
@@ -222,11 +238,13 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
 
 .nav-center { display: flex; gap: 0.1rem; }
 .nl {
-  font-size: 0.875rem; font-weight: 400; color: var(--ink-3);
+  font-family: var(--f-ui); /* Roboto */
+  font-size: 0.85rem; font-weight: 500; color: var(--ink-3);
   padding: 0.5rem 1rem; border-radius: 8px;
+  letter-spacing: 0.01em;
   transition: var(--t);
 }
-.nl:hover { color: var(--ink); background: rgba(255,255,255,0.04); }
+.nl:hover, .nl.active { color: var(--ink); background: rgba(255,255,255,0.05); }
 
 .nav-end { display: flex; align-items: center; gap: 1.25rem; }
 .nav-avail {
@@ -245,13 +263,14 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
 }
 
 .nav-cta-btn {
-  display: inline-flex; align-items: center;
-  background: var(--amber); color: var(--bg);
-  font-weight: 600; font-size: 0.82rem; letter-spacing: 0.02em;
-  padding: 0.55rem 1.1rem; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--amber); color: #0a0908;
+  font-family: var(--f-ui); /* Roboto */
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.6rem 1.2rem; border-radius: 8px;
   transition: var(--t);
 }
-.nav-cta-btn:hover { background: var(--amber-2); }
+.nav-cta-btn:hover { background: var(--amber-2); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(212,145,90,0.3); }
 
 .nav-burger {
   display: none; flex-direction: column; gap: 5.5px; padding: 6px;
@@ -748,45 +767,151 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
 /* =======================================================
    FOOTER
 ======================================================= */
+/* =======================================================
+   FOOTER  — Premium multi-row layout
+======================================================= */
 .footer {
   background: var(--bg-1);
   border-top: 1px solid var(--border);
-  padding: 5rem 0 2.5rem;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Amber accent strip at very top */
+.footer::before {
+  content: '';
+  display: block;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--amber) 30%, var(--amber-2) 70%, transparent 100%);
+}
+
+/* Top block: brand + tagline + CTA */
 .footer-top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 2rem; margin-bottom: 4rem; padding-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding: 5rem 0 4rem;
   border-bottom: 1px solid var(--border);
+  align-items: start;
 }
-.footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+
+.footer-brand {
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.footer-logo-wrap {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+}
 .footer-logo-mark {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px; width: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px; width: 22px;
 }
-.footer-logo-mark span { display: block; padding-bottom: 100%; background: var(--amber); border-radius: 2px; }
+.footer-logo-mark span {
+  display: block; padding-bottom: 100%; background: var(--amber); border-radius: 2px;
+}
 .footer-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600; color: var(--ink);
+  font-family: var(--f-brand); /* Montserrat */
+  font-size: 1.1rem; font-weight: 800; color: var(--ink);
+  letter-spacing: 0.06em; text-transform: uppercase;
 }
-.footer-tagline { font-size: 0.9rem; color: var(--ink-3); line-height: 1.6; text-align: right; }
+.footer-desc {
+  font-family: var(--f-body); /* Open Sans */
+  font-size: 0.875rem; color: var(--ink-3); line-height: 1.7;
+  max-width: 260px;
+}
+.footer-avail {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--f-caption); /* Lato */
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #4ade80;
+  margin-top: 0.75rem;
+}
+.footer-avail-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.2); animation: pulse 2s infinite;
+}
 
-.footer-mid { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
-.footer-nav { display: flex; gap: 2rem; }
-.footer-nav a { font-size: 0.875rem; color: var(--ink-3); transition: color var(--t); }
-.footer-nav a:hover { color: var(--amber); }
+/* Middle cols: nav links */
+.footer-links-col h4 {
+  font-family: var(--f-caption); /* Lato */
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.5rem;
+}
+.footer-links-col a {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--f-ui); /* Roboto */
+  font-size: 0.875rem; color: var(--ink-3);
+  margin-bottom: 0.85rem;
+  transition: color var(--t), gap var(--t);
+}
+.footer-links-col a i {
+  font-size: 0.6rem; color: var(--amber); opacity: 0;
+  transition: opacity var(--t);
+}
+.footer-links-col a:hover { color: var(--ink); gap: 0.75rem; }
+.footer-links-col a:hover i { opacity: 1; }
 
-.footer-socials { display: flex; gap: 0.75rem; }
-.footer-socials a {
-  width: 38px; height: 38px; border-radius: 9px;
+/* Right col: social + contact */
+.footer-contact-col h4 {
+  font-family: var(--f-caption);
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.5rem;
+}
+.footer-contact-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: var(--f-body);
+  font-size: 0.85rem; color: var(--ink-3);
+  margin-bottom: 0.85rem; transition: color var(--t);
+}
+.footer-contact-item i { color: var(--amber); width: 16px; text-align: center; font-size: 0.8rem; }
+.footer-contact-item:hover { color: var(--ink); }
+
+.footer-socials-row {
+  display: flex; gap: 0.6rem; margin-top: 1.5rem;
+}
+.footer-socials-row a {
+  width: 36px; height: 36px; border-radius: 9px;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  color: var(--ink-3); transition: var(--t);
+  color: var(--ink-3); font-size: 0.85rem;
+  transition: var(--t);
 }
-.footer-socials a:hover { border-color: var(--amber-line); color: var(--amber); }
+.footer-socials-row a:hover {
+  border-color: var(--amber-line);
+  color: var(--amber);
+  background: var(--amber-dim);
+  transform: translateY(-2px);
+}
 
+/* Bottom bar */
 .footer-bottom {
-  display: flex; justify-content: space-between;
-  font-size: 0.75rem; color: var(--ink-4);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.75rem 0;
+  gap: 1rem; flex-wrap: wrap;
 }
+.footer-copy {
+  font-family: var(--f-caption); /* Lato */
+  font-size: 0.75rem; color: var(--ink-4); letter-spacing: 0.03em;
+}
+.footer-note {
+  font-family: var(--f-caption); /* Lato */
+  font-size: 0.7rem; color: var(--ink-4);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.footer-note i { color: var(--amber); font-size: 0.65rem; }
+
+/* Footer responsive */
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 4rem 0 3rem; }
+  .footer-contact-col { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .footer-top { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0 2.5rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .footer-desc { max-width: 100%; }
+}
+
 
 /* =======================================================
    ANIMATIONS
@@ -835,8 +960,10 @@ body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
     border-top: 1px solid var(--border);
   }
   .nav-center.open .nl {
-    font-size: 2rem; font-family: 'Cormorant Garamond', serif;
-    font-weight: 300; color: var(--ink); padding: 0.75rem 0;
+    font-family: var(--f-brand); /* Montserrat */
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--ink); padding: 1rem 0;
+    letter-spacing: 0.03em; text-transform: uppercase;
     border-bottom: 1px solid var(--border);
   }
 
