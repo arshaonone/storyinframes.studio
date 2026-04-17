@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for standard icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎥</text></svg>">
 </head>
 <body>
-    <div id="cursorRing" class="cursor-ring"></div>
     <div class="ambient-glow ag-1"></div>
     <div class="ambient-glow ag-2"></div>
 
@@ -77,10 +77,17 @@
             <h2 class="sec-title">Featured Showreel</h2>
             <p class="sec-desc">A curated glimpse into our latest cinematic work — where every frame is crafted with intention, emotion, and precision.</p>
         </div>
-        <div class="video-container">
-            <!-- Placeholder for Showreel -->
-            <div class="video-placeholder">
-                <i class="fa-solid fa-play play-icon"></i>
+        <div class="showreel-hero-grid">
+            <div class="video-container main-video">
+                <img src="assets/hero_cinematic.png" alt="Showreel Main" class="sr-img">
+                <div class="video-play-btn">
+                    <i class="fa-solid fa-play play-icon"></i>
+                </div>
+            </div>
+            <div class="sr-side-photos">
+                <div class="sr-photo-wrap"><img src="assets/portfolio_wedding.png" alt="Wedding Film" class="sr-photo"></div>
+                <div class="sr-photo-wrap"><img src="assets/portfolio_commercial.png" alt="Commercial Shoot" class="sr-photo"></div>
+                <div class="sr-photo-wrap"><img src="assets/portfolio_travel.png" alt="Travel Documentary" class="sr-photo"></div>
             </div>
         </div>
     </section>
