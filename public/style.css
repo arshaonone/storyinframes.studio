@@ -67,6 +67,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Fine diagonal mesh — always visible beneath everything */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 72px 72px, 72px 72px, 102px 102px;
+  mask-image: radial-gradient(ellipse 120% 120% at 50% 0%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+}
 img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -76,16 +89,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .wrap { max-width: 1380px; margin: 0 auto; padding: 0 3rem; }
 .section { padding: 9rem 0; }
 
-/* ── Global background orbs ─────────────────────────────────── */
+/* ── Global aurora background — animated, fixed ──────────────── */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: -2;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 10%,  rgba(224,154,80,0.09)  0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 80%,  rgba(120,80,200,0.07)  0%, transparent 60%),
-    radial-gradient(ellipse 70% 60% at 50% 50%,  rgba(13,11,20,1) 30%, transparent 100%);
   background-color: var(--bg);
+  background-image:
+    /* Amber top-right pulse */
+    radial-gradient(ellipse 55% 45% at 85% -5%,  rgba(224,154,80,0.16)  0%, transparent 58%),
+    /* Deep rose accent — subtle warmth */
+    radial-gradient(ellipse 40% 35% at 95% 55%,  rgba(200,80,100,0.06)  0%, transparent 55%),
+    /* Purple/indigo bottom-left */
+    radial-gradient(ellipse 55% 50% at -5% 90%,  rgba(100,60,220,0.12)  0%, transparent 58%),
+    /* Teal hint far bottom-right */
+    radial-gradient(ellipse 35% 30% at 100% 100%, rgba(30,180,160,0.06)  0%, transparent 55%),
+    /* Centre vignette keeps it cinematic */
+    radial-gradient(ellipse 80% 70% at 50% 40%,  transparent 30%, rgba(6,5,10,0.5) 100%);
   pointer-events: none;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift {
+  0%   { filter: hue-rotate(0deg)   brightness(1.00); }
+  33%  { filter: hue-rotate(8deg)   brightness(1.04); }
+  66%  { filter: hue-rotate(-6deg)  brightness(0.97); }
+  100% { filter: hue-rotate(12deg)  brightness(1.06); }
 }
 
 /* ── Glass mixin utility ─────────────────────────────────────── */
@@ -94,6 +121,18 @@ body::before {
   backdrop-filter: blur(22px) saturate(1.5);
   -webkit-backdrop-filter: blur(22px) saturate(1.5);
   border: 1px solid var(--gb);
+}
+
+/* Decorative glowing ring — reusable */
+.glow-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(224,154,80,0.12);
+  pointer-events: none;
+  animation: ring-pulse 6s ease-in-out infinite;
+}
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.5; }
+  50%       { transform: scale(1.06); opacity: 1;   }
 }
 
 /* ── Reveal ─────────────────────────────────────────────────── */
@@ -289,34 +328,63 @@ body::before {
   overflow: hidden;
 }
 
-/* Atmospheric glow orbs */
+/* Animated floating orbs — each drifts on its own cycle */
 .hero-orb-1, .hero-orb-2, .hero-orb-3 {
   position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+  will-change: transform;
 }
 .hero-orb-1 {
-  width: 900px; height: 900px;
-  top: -350px; right: -250px;
-  background: radial-gradient(circle, rgba(224,154,80,0.13) 0%, transparent 65%);
+  width: 1000px; height: 1000px;
+  top: -420px; right: -280px;
+  background: radial-gradient(circle at 40% 40%,
+    rgba(224,154,80,0.18) 0%,
+    rgba(200,100,50,0.08) 35%,
+    transparent 65%);
+  animation: orb-drift-1 20s ease-in-out infinite alternate;
 }
 .hero-orb-2 {
-  width: 700px; height: 700px;
-  bottom: 0; left: -200px;
-  background: radial-gradient(circle, rgba(100,60,200,0.09) 0%, transparent 65%);
+  width: 800px; height: 800px;
+  bottom: -100px; left: -240px;
+  background: radial-gradient(circle at 60% 50%,
+    rgba(100,60,220,0.14) 0%,
+    rgba(60,20,180,0.06) 40%,
+    transparent 65%);
+  animation: orb-drift-2 24s ease-in-out infinite alternate;
 }
 .hero-orb-3 {
-  width: 500px; height: 500px;
-  top: 30%; left: 35%;
-  background: radial-gradient(circle, rgba(224,154,80,0.05) 0%, transparent 70%);
+  width: 600px; height: 600px;
+  top: 25%; left: 30%;
+  background: radial-gradient(circle,
+    rgba(224,154,80,0.07) 0%,
+    transparent 65%);
+  animation: orb-drift-3 16s ease-in-out infinite alternate;
 }
 
-/* Fine grid */
+@keyframes orb-drift-1 {
+  0%   { transform: translate(0, 0)    scale(1);    }
+  50%  { transform: translate(-40px, 30px) scale(1.06); }
+  100% { transform: translate(20px, -50px) scale(0.96); }
+}
+@keyframes orb-drift-2 {
+  0%   { transform: translate(0, 0)    scale(1);    }
+  50%  { transform: translate(50px, -30px) scale(1.08); }
+  100% { transform: translate(-20px, 40px) scale(0.94); }
+}
+@keyframes orb-drift-3 {
+  0%   { transform: translate(0, 0)    scale(1);    opacity: 0.6; }
+  50%  { transform: translate(30px, 20px) scale(1.12); opacity: 1;   }
+  100% { transform: translate(-20px,-15px) scale(0.90); opacity: 0.5; }
+}
+
+/* Fine grid — horizontal + vertical + diagonal */
 .hero-grid-bg {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 10%, black 10%, transparent 100%);
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+  background-size: 72px 72px, 72px 72px, 102px 102px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 5%, black 5%, rgba(0,0,0,0.5) 55%, transparent 100%);
 }
 
 .hero-inner {
@@ -486,7 +554,17 @@ body::before {
 /* ══════════════════════════════════════════════════════════════
    WORK
 ══════════════════════════════════════════════════════════════ */
-.work-section { background: var(--bg-1); }
+.work-section {
+  background: var(--bg-1);
+  position: relative; overflow: hidden;
+}
+.work-section::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 45% at 100% 0%,   rgba(224,154,80,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 0%   100%, rgba(80,50,180,0.07)  0%, transparent 55%);
+}
 
 .work-grid {
   display: grid;
@@ -549,7 +627,17 @@ body::before {
 /* ══════════════════════════════════════════════════════════════
    SERVICES
 ══════════════════════════════════════════════════════════════ */
-.services-section { background: var(--bg); }
+.services-section {
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.services-section::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(100,60,220,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 25% at 0%   50%, rgba(224,154,80,0.05) 0%, transparent 55%);
+}
 
 .services-list { border-top: 1px solid var(--gb); }
 .srv { border-bottom: 1px solid var(--gb); transition: background 0.4s; }
@@ -613,7 +701,17 @@ body::before {
 /* ══════════════════════════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════════════════════════ */
-.about-section { background: var(--bg-1); }
+.about-section {
+  background: var(--bg-1);
+  position: relative; overflow: hidden;
+}
+.about-section::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 50% at -10% 50%,  rgba(224,154,80,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 110%  50%, rgba(80,40,200,0.07)  0%, transparent 55%);
+}
 
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
 
@@ -700,7 +798,16 @@ body::before {
 /* ══════════════════════════════════════════════════════════════
    TESTIMONIALS
 ══════════════════════════════════════════════════════════════ */
-.testimonials-section { background: var(--bg); }
+.testimonials-section {
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.testimonials-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 400px;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(224,154,80,0.07) 0%, transparent 60%);
+}
 .sh-center { text-align: center; }
 
 .testimonials-scroller { overflow-x: auto; scrollbar-width: none; cursor: grab; padding-bottom: 2rem; }
