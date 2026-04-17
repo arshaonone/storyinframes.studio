@@ -217,14 +217,25 @@ img{max-width:100%;display:block}button{cursor:pointer;border:none;background:no
 .fi-1 { transform: rotate(-5deg); z-index: 2; }
 .fi-2 { transform: rotate(10deg) translateX(-60px) translateY(30px); z-index: 1; }
 
-/* ─── ABOUT & WHY US ─────────────────────── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+/* ─── ABOUT & FOUNDER ────────────────────── */
+.about-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.founder-image-card { position: relative; border-radius: var(--r-md); overflow: hidden; border: var(--border); box-shadow: var(--shadow-glow); aspect-ratio: 4/5; }
+.f-img-main { width: 100%; height: 100%; object-fit: cover; }
+.f-quote-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 3rem 2rem 2rem; background: linear-gradient(to top, rgba(11,13,16,0.95), transparent); backdrop-filter: blur(5px);}
+.f-quote-overlay i { font-size: 1.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+.f-quote-overlay p { font-size: 1.1rem; font-style: italic; color: var(--text-main); line-height: 1.5; font-family: var(--f-head); font-weight: 500;}
+
+.founder-badge { display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: var(--bg-card); border-radius: var(--r-pill); border: var(--border); }
+.fb-name { font-family: var(--f-head); font-weight: 700; color: var(--text-main); font-size: 1rem; }
+.fb-role { font-family: var(--f-ui); font-size: 0.8rem; color: var(--accent); border-left: 1px solid var(--text-3); padding-left: 1rem;}
+
 .about-text p { margin-bottom: 1.5rem; font-size: 1.05rem; }
-.why-us h3 { font-family: var(--f-head); font-size: 1.8rem; color: var(--text-main); margin-bottom: 2rem; }
-.why-list { display: flex; flex-direction: column; gap: 2rem; }
-.why-list li { display: flex; gap: 1.5rem; }
-.why-list i { font-size: 1.5rem; color: var(--accent); margin-top: 0.2rem; }
-.why-list strong { font-family: var(--f-ui); font-size: 1.1rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
+
+.why-us-minimal { display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+.w-item { display: flex; align-items: center; gap: 1rem; background: var(--bg-card); padding: 1rem 1.5rem; border-radius: var(--r-sm); border: var(--border); transition: var(--trans); flex: 1; min-width: 150px;}
+.w-item:hover { border-color: rgba(96,238,178,0.3); transform: translateY(-3px); }
+.w-item i { font-size: 1.5rem; color: var(--accent); }
+.w-item span { font-size: 0.85rem; font-family: var(--f-ui); font-weight: 500; color: var(--text-main); line-height: 1.3; }
 
 /* ─── TESTIMONIALS ───────────────────────── */
 .t-scroll { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 2rem; scrollbar-width: none; }
@@ -272,7 +283,7 @@ img{max-width:100%;display:block}button{cursor:pointer;border:none;background:no
 /* ─── RESPONSIVE ─────────────────────────── */
 @media(max-width: 992px) {
   .bento-grid { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact-bento { grid-template-columns: 1fr; }
   .head-left { align-items: center; text-align: center; }
 }
